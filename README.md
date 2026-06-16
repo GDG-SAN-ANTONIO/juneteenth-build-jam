@@ -15,7 +15,7 @@ Install these four things so you're ready to go the moment the jam starts:
 | **Antigravity** | [antigravity.google/download](https://antigravity.google/download) |
 | **uv** (Python manager) | [astral.sh/uv](https://astral.sh/uv) |
 | **Git + GitHub account** | [git-scm.com](https://git-scm.com) |
-| **Free Gemini API key** | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) |
+| **Free Gemini API key** | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) — free tier covers the whole jam |
 
 ---
 
