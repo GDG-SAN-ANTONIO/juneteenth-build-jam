@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Civic Hacking Talk · GDG San Antonio Juneteenth Build Jam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --ink-2: #141414;
+    --cream: #F4ECDC;
+    --cream-dim: #cdc2ad;
+    --gold: #CE1126;
+    --green: #009A44;
+    --line: rgba(244,236,220,.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #000; }
+
+  /* 16:9 stage that scales to window */
+  .stage {
+    position: relative;
+    width: 100vw;
+    max-width: 177.78vh;
+    height: 56.25vw;
+    max-height: 100vh;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Each slide */
+  .slide {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: "Public Sans", system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 7%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    overflow: hidden;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Ambient glow layers */
+  .glow-red::before {
+    content: "";
+    position: absolute;
+    top: -20%; right: -8%;
+    width: 46%; height: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(206,17,38,.28), transparent 62%);
+    pointer-events: none;
+  }
+  .glow-green::after {
+    content: "";
+    position: absolute;
+    bottom: -26%; left: -8%;
+    width: 40%; height: 80%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,154,68,.2), transparent 64%);
+    pointer-events: none;
+  }
+
+  /* Typography helpers */
+  .eyebrow {
+    font-family: "Space Mono", monospace;
+    font-size: 1.1vw;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .8em;
+    position: relative; z-index: 2;
+  }
+  .display {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    line-height: .96;
+    letter-spacing: -.02em;
+    position: relative; z-index: 2;
+  }
+  .mono { font-family: "Space Mono", monospace; }
+
+  /* ── SLIDE 1: Title ── */
+  #s1 h1 { font-size: 6.5vw; }
+  #s1 h1 span { color: var(--gold); }
+  #s1 .sub {
+    margin-top: 1.4vw;
+    font-size: 1.8vw;
+    color: var(--cream-dim);
+    font-weight: 500;
+    max-width: 44ch;
+    position: relative; z-index: 2;
+  }
+  #s1 .meta {
+    margin-top: .8vw;
+    font-family: "Space Mono", monospace;
+    font-size: 1vw;
+    color: rgba(244,236,220,.4);
+    position: relative; z-index: 2;
+  }
+  .nova-bg {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32vw;
+    color: rgba(206,17,38,.18);
+    animation: spin 60s linear infinite;
+    z-index: 1;
+  }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+  .event-img-slide {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    max-width: 52%;
+    object-fit: cover;
+    object-position: center top;
+    mask-image: linear-gradient(to left, rgba(0,0,0,.9) 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,.9) 30%, transparent 100%);
+    z-index: 1;
+  }
+
+  /* ── SLIDE 2: Definition ── */
+  #s2 { justify-content: center; }
+  #s2 .quote {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    font-size: 3.6vw;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    max-width: 22ch;
+    position: relative; z-index: 2;
+  }
+  #s2 .quote span { color: var(--gold); }
+  #s2 .quote em { color: var(--green); font-style: normal; }
+  #s2 .attr {
+    margin-top: 2vw;
+    font-family: "Space Mono", monospace;
+    font-size: 1vw;
+    color: rgba(244,236,220,.4);
+    position: relative; z-index: 2;
+  }
+
+  /* ── PRINCIPLE SLIDES ── */
+  .principle-num {
+    font-family: "Space Mono", monospace;
+    font-size: 1vw;
+    color: var(--gold);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: .6vw;
+    position: relative; z-index: 2;
+  }
+  .principle-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    font-size: 4.8vw;
+    line-height: 1;
+    letter-spacing: -.02em;
+    margin-bottom: 1.6vw;
+    position: relative; z-index: 2;
+  }
+  .principle-body {
+    font-size: 1.6vw;
+    color: var(--cream-dim);
+    max-width: 52ch;
+    line-height: 1.55;
+    position: relative; z-index: 2;
+  }
+  .principle-ask {
+    margin-top: 2vw;
+    font-family: "Space Mono", monospace;
+    font-size: 1.15vw;
+    color: var(--green);
+    border-left: 3px solid var(--green);
+    padding-left: 1.2vw;
+    position: relative; z-index: 2;
+    max-width: 56ch;
+    line-height: 1.5;
+  }
+  /* Large background number */
+  .bg-num {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    font-size: 28vw;
+    line-height: 1;
+    color: rgba(244,236,220,.03);
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  /* ── SLIDE 9: Transition to Build ── */
+  #s9 { align-items: flex-start; justify-content: center; }
+  #s9 h2 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    font-size: 5.8vw;
+    line-height: .96;
+    letter-spacing: -.02em;
+    position: relative; z-index: 2;
+  }
+  #s9 h2 span { color: var(--gold); }
+  #s9 .tracks {
+    margin-top: 2.4vw;
+    display: flex;
+    flex-direction: column;
+    gap: .7vw;
+    position: relative; z-index: 2;
+  }
+  #s9 .track-row {
+    font-size: 1.45vw;
+    color: var(--cream-dim);
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+  #s9 .track-row b { color: var(--cream); font-weight: 700; }
+  #s9 .cta {
+    margin-top: 2.6vw;
+    font-family: "Space Mono", monospace;
+    font-size: 1.05vw;
+    color: var(--green);
+    position: relative; z-index: 2;
+  }
+
+  /* ── Navigation ── */
+  .nav-bar {
+    position: absolute;
+    bottom: 3%;
+    left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4%;
+    z-index: 20;
+  }
+  .nav-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--cream-dim);
+    font-family: "Space Mono", monospace;
+    font-size: .9vw;
+    padding: .5vw 1.2vw;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .nav-btn:hover { border-color: var(--cream); color: var(--cream); }
+  .nav-btn:disabled { opacity: .2; pointer-events: none; }
+  .slide-counter {
+    font-family: "Space Mono", monospace;
+    font-size: .85vw;
+    color: rgba(244,236,220,.3);
+  }
+
+  /* Progress dots */
+  .dots {
+    display: flex;
+    gap: .5vw;
+    align-items: center;
+  }
+  .dot {
+    width: .5vw;
+    height: .5vw;
+    border-radius: 50%;
+    background: var(--line);
+    transition: background .2s, transform .2s;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+  }
+
+  /* Keyboard hint */
+  .key-hint {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Space Mono", monospace;
+    font-size: .75vw;
+    color: rgba(244,236,220,.2);
+    z-index: 20;
+    white-space: nowrap;
+  }
+
+  /* Home button */
+  .home-btn {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 3.2vw;
+    height: 3.2vw;
+    color: rgba(244,236,220,.3);
+    z-index: 20;
+    transition: color .2s, transform .2s;
+    display: block;
+  }
+  .home-btn:hover {
+    color: var(--gold);
+    transform: scale(1.15);
+  }
+
+  /* divider line accent */
+  .accent-line {
+    width: 4vw;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 1.6vw;
+    position: relative; z-index: 2;
+  }
+  .accent-line.green { background: var(--green); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="nova" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="50" cy="50" r="30"/>
+      <circle cx="50" cy="50" r="44" stroke-dasharray="2 6"/>
+    </g>
+    <path fill="currentColor" d="M50 12 L56 44 L88 50 L56 56 L50 88 L44 56 L12 50 L44 44 Z"/>
+  </symbol>
+</svg>
+
+<div class="stage" id="stage">
+
+  <!-- Slide 1: Title -->
+  <div class="slide glow-red glow-green active" id="s1">
+    <img class="event-img-slide" src="Gemini_Generated_Image_otlo13otlo13otlo.webp" alt="Juneteenth Build Jam" />
+    <p class="eyebrow">GDG San Antonio · June 19 · Geekdom</p>
+    <h1 class="display">Civic<br>Hacking<br><span>&amp; AI.</span></h1>
+    <p class="sub">How technology, data, and community collaboration can solve real public problems — and how you're going to do it today.</p>
+    <p class="meta">Use → arrow keys or click the buttons to advance</p>
+  </div>
+
+  <!-- Slide 2: Definition -->
+  <div class="slide glow-red" id="s2">
+    <p class="eyebrow">What is civic hacking?</p>
+    <p class="quote">"Applying <span>technology</span>, data, and <em>community collaboration</em> to solve public problems in ways that are transparent, inclusive, and sustainable."</p>
+    <p class="attr">// not about breaking things — about building them better</p>
+  </div>
+
+  <!-- Slide 3: Principle 1 -->
+  <div class="slide" id="s3">
+    <div class="bg-num">1</div>
+    <p class="principle-num">Principle 01</p>
+    <div class="accent-line"></div>
+    <h2 class="principle-title">Design With,<br>Not For.</h2>
+    <p class="principle-body">The people closest to a problem should help shape the solution. Work alongside residents, community orgs, and local stakeholders to understand real needs before writing a single line of code.</p>
+    <p class="principle-ask">Ask: Who is affected by this problem, and have we talked to them yet?</p>
+  </div>
+
+  <!-- Slide 4: Principle 2 -->
+  <div class="slide" id="s4">
+    <div class="bg-num">2</div>
+    <p class="principle-num">Principle 02</p>
+    <div class="accent-line"></div>
+    <h2 class="principle-title">Default<br>to Open.</h2>
+    <p class="principle-body">Public-interest technology should be transparent, reusable, and accessible. Use open-source tools and open data so communities can audit, improve, and sustain solutions long after you move on.</p>
+    <p class="principle-ask">Ask: Can someone else build on this work tomorrow?</p>
+  </div>
+
+  <!-- Slide 5: Principle 3 -->
+  <div class="slide" id="s5">
+    <div class="bg-num">3</div>
+    <p class="principle-num">Principle 03</p>
+    <div class="accent-line"></div>
+    <h2 class="principle-title">Data Integrity<br>Over Aesthetics.</h2>
+    <p class="principle-body">Trust is built on accurate information. A simple tool that produces reliable, well-structured data creates more community value than a beautiful app built on incomplete or inconsistent data.</p>
+    <p class="principle-ask">Ask: Can decision-makers trust the data we're providing?</p>
+  </div>
+
+  <!-- Slide 6: Principle 4 -->
+  <div class="slide" id="s6">
+    <div class="bg-num">4</div>
+    <p class="principle-num">Principle 04</p>
+    <div class="accent-line"></div>
+    <h2 class="principle-title">Iterate<br>for Impact.</h2>
+    <p class="principle-body">Solve one problem well before solving ten problems poorly. Build small, focused tools that reduce friction today. Launch, gather feedback, and improve based on real-world use — not assumptions.</p>
+    <p class="principle-ask">Ask: What's the smallest thing we can ship that creates meaningful value?</p>
+  </div>
+
+  <!-- Slide 7: Principle 5 -->
+  <div class="slide" id="s7">
+    <div class="bg-num">5</div>
+    <p class="principle-num">Principle 05</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Measure<br>Outcomes.</h2>
+    <p class="principle-body">Success isn't measured by lines of code, downloads, or GitHub stars. Success is measured by whether people can access resources faster, participate more easily, or make better-informed decisions.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: What community outcome improved because this exists?</p>
+  </div>
+
+  <!-- Slide 8: Principle 6 -->
+  <div class="slide" id="s8">
+    <div class="bg-num">6</div>
+    <p class="principle-num">Principle 06</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Technology is<br>a Tool.</h2>
+    <p class="principle-body">The objective is not to showcase AI or the latest framework. The objective is to make life better for people. Sometimes the best solution is a spreadsheet, a form, or a simple dashboard.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: Are we solving a real problem, or chasing a shiny technology?</p>
+  </div>
+
+  <!-- Slide 9: Transition to Build Jam -->
+  <div class="slide glow-red glow-green" id="s9">
+    <img class="event-img-slide" src="Gemini_Generated_Image_otlo13otlo13otlo.webp" alt="Juneteenth Build Jam" />
+    <p class="eyebrow">Now let's build</p>
+    <h2>Five tracks.<br><span>Two hours.</span><br>Real impact.</h2>
+    <div class="tracks">
+      <div class="track-row">🛍️ <b>Stand Up Shop</b> — economic empowerment</div>
+      <div class="track-row">📜 <b>Griot</b> — preserving history</div>
+      <div class="track-row">🩺 <b>PlainCare</b> — community health</div>
+      <div class="track-row">🗣️ <b>Speak Up</b> — civic engagement</div>
+      <div class="track-row">🌳 <b>Block Scan</b> — environmental justice</div>
+    </div>
+    <p class="cta">→ Open the codelab and pick your track.</p>
+  </div>
+
+  <!-- Home button -->
+  <a href="index.html" class="home-btn" title="Back to home">
+    <svg viewBox="0 0 100 100" width="100%" height="100%"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="44" stroke-dasharray="2 6"/></g><path fill="currentColor" d="M50 12 L56 44 L88 50 L56 56 L50 88 L44 56 L12 50 L44 44 Z"/></svg>
+  </a>
+
+  <!-- Nav bar -->
+  <div class="nav-bar">
+    <button class="nav-btn" id="prev-btn" disabled>← Back</button>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:.6vw">
+      <div class="dots" id="dots"></div>
+      <span class="slide-counter" id="counter">1 / 9</span>
+    </div>
+    <button class="nav-btn" id="next-btn">Next →</button>
+  </div>
+
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const counter = document.getElementById('counter');
+  const dotsContainer = document.getElementById('dots');
+  const total = slides.length;
+  let current = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = Math.max(0, Math.min(total - 1, n));
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${total}`;
+    prevBtn.disabled = current === 0;
+    nextBtn.textContent = current === total - 1 ? 'Done ✓' : 'Next →';
+    nextBtn.disabled = false;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => {
+    if (current < total - 1) goTo(current + 1);
+    else window.location.href = 'index.html';
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+  });
+
+  // Click anywhere on slide to advance
+  slides.forEach(s => {
+    s.addEventListener('click', e => {
+      if (!e.target.closest('.nav-bar')) goTo(current + 1);
+    });
+  });
+</script>
+</body>
+</html>

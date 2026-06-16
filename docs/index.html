@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Juneteenth Build Jam · GDG San Antonio</title>
+<meta name="description" content="Build with AI. Together. In two hours. Five civic tracks, open a kit, ship a real prototype for your community." />
+
+<!-- ====================================================================
+     THINGS TO REPLACE (search for the word REPLACE):
+     1. GitHub URL  -> the repo you push the kit to
+     2. Demo video  -> paste your YouTube/Vimeo embed in the #demo section
+     3. Date + venue -> in the hero eyebrow and the footer
+     ==================================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0A0A0A;            /* Pan-African black */
+    --ink-2:#141414;          /* raised surface */
+    --cream:#F4ECDC;          /* parchment text/light */
+    --cream-dim:#cdc2ad;
+    --gold:#CE1126;           /* Pan-African red */
+    --clay:#CE1126;           /* Pan-African red */
+    --teal:#009A44;           /* Pan-African green */
+    --indigo:#CE1126;         /* red */
+    --green:#009A44;          /* Pan-African green */
+    --line:rgba(244,236,220,.14);
+    --maxw:1140px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:"Public Sans",system-ui,sans-serif;
+    font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  .display{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:.98;letter-spacing:-.02em}
+  .mono{font-family:"Space Mono",monospace}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(23,17,12,.72);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:.95rem}
+  .brand .star{width:20px;height:20px;flex:none}
+  .nav-cta{font-family:"Space Mono",monospace;font-size:.8rem;border:1px solid var(--line);
+    padding:9px 16px;border-radius:999px;transition:.2s;white-space:nowrap}
+  .nav-cta:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:108px 0 84px;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;max-width:920px}
+  .hero h1{font-size:clamp(3rem,9vw,6.4rem);margin:.28em 0 .34em}
+  .hero h1 .free{color:var(--gold)}
+  .hero p.lede{font-size:clamp(1.05rem,2.3vw,1.4rem);max-width:30ch;color:var(--cream);font-weight:500}
+  .hero .meta{margin-top:14px;color:var(--cream-dim);font-size:.98rem;max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .btn{font-weight:700;padding:15px 26px;border-radius:12px;transition:transform .15s ease, box-shadow .2s ease;display:inline-flex;align-items:center;gap:9px}
+  .btn-primary{background:var(--gold);color:#2a1c06;box-shadow:0 10px 30px -10px rgba(232,163,61,.6)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--cream);background:rgba(244,236,220,.05)}
+
+  /* ambient freedom-star + glow */
+  .glow{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .glow::before{content:"";position:absolute;top:-22%;right:-12%;width:680px;height:680px;border-radius:50%;
+    background:radial-gradient(circle, rgba(206,17,38,.32), transparent 62%);filter:blur(8px)}
+  .glow::after{content:"";position:absolute;bottom:-30%;left:-14%;width:560px;height:560px;border-radius:50%;
+    background:radial-gradient(circle, rgba(0,154,68,.24), transparent 64%)}
+  .nova{position:absolute;top:60px;right:6%;z-index:1;width:min(360px,38vw);opacity:.9;animation:spin 60s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .event-img{position:absolute;top:0;right:0;z-index:1;height:100%;width:auto;max-width:48%;object-fit:cover;object-position:center top;mask-image:linear-gradient(to left, rgba(0,0,0,.85) 40%, transparent 100%);-webkit-mask-image:linear-gradient(to left, rgba(0,0,0,.85) 40%, transparent 100%);opacity:.92;}
+  @media(max-width:760px){.event-img{display:none}}
+
+  /* ---------- section frame ---------- */
+  .section{padding:84px 0;border-top:1px solid var(--line)}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.9rem)}
+  .section-head .note{color:var(--cream-dim);font-family:"Space Mono",monospace;font-size:.8rem}
+
+  /* ---------- tracks ---------- */
+  .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+  .card{position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:18px;
+    padding:26px 24px 24px;overflow:hidden;transition:transform .18s ease, border-color .2s ease}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+  .card:hover{transform:translateY(-5px);border-color:var(--c)}
+  .card .glyph{font-size:1.9rem;line-height:1}
+  .card .domain{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin:16px 0 8px}
+  .card h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.01em}
+  .card .ship{margin-top:8px;color:var(--cream-dim);font-size:.97rem}
+  .card .builds{margin-top:16px;font-size:.82rem;color:var(--cream);opacity:.75}
+
+  /* ---------- demo ---------- */
+  .demo-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);background:linear-gradient(135deg,#241a12,#17110C)}
+  .demo-frame iframe,.demo-frame video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .demo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px}
+  .demo-placeholder .star{width:54px;height:54px;opacity:.85}
+  .demo-placeholder p{color:var(--cream-dim);max-width:34ch;font-size:.95rem}
+  .demo-cap{margin-top:18px;color:var(--cream-dim);font-size:.92rem}
+
+  /* ---------- run / preflight ---------- */
+  .run-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+  .term{background:#0e0a06;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .term .bar{display:flex;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line)}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term pre{padding:20px 18px;overflow-x:auto;font-family:"Space Mono",monospace;font-size:.86rem;line-height:1.9;color:var(--cream)}
+  .term .c{color:#7fae84}     /* comment */
+  .term .p{color:var(--gold)} /* prompt $ */
+  .steps{counter-reset:s;list-style:none}
+  .steps li{position:relative;padding:0 0 22px 52px;border-left:1px solid var(--line);margin-left:16px}
+  .steps li:last-child{border-left-color:transparent;padding-bottom:0}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:-16px;top:-4px;
+    width:33px;height:33px;border-radius:50%;background:var(--ink-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:"Space Mono",monospace;font-size:.85rem;color:var(--gold)}
+  .steps strong{display:block;font-size:1.02rem}
+  .steps span{color:var(--cream-dim);font-size:.93rem}
+  .steps a{color:var(--gold);border-bottom:1px solid rgba(232,163,61,.4)}
+
+  /* ---------- footer ---------- */
+  .foot{border-top:1px solid var(--line);padding:56px 0 70px}
+  .foot .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-end}
+  .foot h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.6rem;max-width:18ch;line-height:1.05}
+  .foot .right{text-align:right;color:var(--cream-dim);font-size:.9rem;font-family:"Space Mono",monospace;line-height:1.9}
+  .foot .right a{color:var(--gold)}
+
+  @media(max-width:760px){
+    .run-grid{grid-template-columns:1fr;gap:34px}
+    .nova{display:none}
+    .hero{padding:72px 0 60px}
+    .foot .right{text-align:left}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+
+  /* ---------- tabs demo ---------- */
+  .demo-tabs { margin-top: 24px; }
+  .tabs-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 24px; scrollbar-width: none; }
+  .tabs-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { background: transparent; border: 1px solid var(--line); color: var(--cream-dim); padding: 10px 18px; border-radius: 999px; cursor: pointer; font-family: "Space Mono", monospace; font-size: .85rem; white-space: nowrap; transition: .2s; }
+  .tab-btn:hover { border-color: var(--cream); color: var(--cream); }
+  .tab-btn.active { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+  .tab-panel { display: none; animation: fadeIn .3s ease; }
+  .tab-panel.active { display: block; }
+  .demo-term { background: #0e0a06; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .demo-term .bar { display: flex; gap: 7px; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+  .demo-term .bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .demo-term .content { padding: 24px; font-family: "Space Mono", monospace; font-size: .9rem; line-height: 1.7; color: var(--cream); }
+  .demo-term .prompt { color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+  .demo-term .input { color: #fff; margin-bottom: 24px; }
+  .demo-term .output { color: #7fae84; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- Mini Projects ---------- */
+  .mini-project { background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .mp-head { padding: 12px 18px; font-weight: 700; font-family: "Space Mono", monospace; font-size: .85rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+  .mp-body { padding: 24px; font-size: .95rem; color: var(--cream); }
+  .mp-user-input { background: rgba(255,255,255,0.03); border-left: 3px solid var(--cream-dim); padding: 12px 16px; margin-bottom: 24px; font-style: italic; color: var(--cream-dim); border-radius: 0 8px 8px 0; }
+  
+  /* T1: Shop */
+  .mp-t1 .mp-head { background: rgba(206,17,38,0.1); color: var(--gold); }
+  .t1-card { display: flex; gap: 20px; align-items: flex-start; }
+  .t1-img { width: 120px; height: 120px; background: linear-gradient(135deg, #332, #221); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-shrink: 0; }
+  .t1-info h4 { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.4rem; margin-bottom: 6px; }
+  .t1-price { color: var(--gold); font-weight: 700; font-size: 1.2rem; margin-bottom: 12px; }
+  .t1-badge { display: inline-block; background: rgba(0,154,68,0.15); color: var(--green); padding: 4px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700; margin-top: 12px; }
+
+  /* T2: Griot */
+  .mp-t2 .mp-head { background: rgba(206,17,38,0.1); color: var(--clay); }
+  .t2-parchment { background: #1c150d; padding: 20px; border-radius: 8px; border: 1px solid rgba(232,163,61,0.2); }
+  .t2-timeline { border-left: 2px solid var(--clay); margin: 16px 0 16px 12px; padding-left: 16px; }
+  .t2-event { position: relative; margin-bottom: 12px; }
+  .t2-event::before { content: ""; position: absolute; left: -21px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); }
+  .t2-year { font-weight: 700; color: var(--clay); }
+
+  /* T3: Health */
+  .mp-t3 .mp-head { background: rgba(0,154,68,0.1); color: var(--teal); }
+  .t3-dash { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .t3-box { background: rgba(0,0,0,0.3); padding: 16px; border-radius: 10px; border: 1px solid var(--line); }
+  .t3-box h5 { color: var(--teal); font-family: "Space Mono", monospace; margin-bottom: 8px; font-size: .85rem; text-transform: uppercase; }
+  .t3-check { display: flex; gap: 8px; margin-top: 10px; align-items: flex-start; }
+  .t3-check i { color: var(--teal); margin-top: 2px; }
+
+  /* T4: Civic */
+  .mp-t4 .mp-head { background: rgba(206,17,38,0.1); color: var(--indigo); }
+  .t4-memo { border-top: 4px solid var(--indigo); padding-top: 16px; }
+  .t4-alert { background: rgba(206,17,38,0.1); border-left: 3px solid var(--indigo); padding: 12px; margin: 16px 0; font-size: .9rem; }
+  .t4-date { font-weight: 700; color: var(--indigo); }
+
+  /* T5: Env */
+  .mp-t5 .mp-head { background: rgba(0,154,68,0.1); color: var(--green); }
+  .t5-ticket { display: flex; flex-direction: column; gap: 12px; }
+  .t5-status { align-self: flex-start; background: var(--green); color: #000; padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: .8rem; text-transform: uppercase; }
+  .t5-form { background: rgba(0,0,0,0.3); padding: 16px; border-radius: 8px; border: 1px solid var(--line); font-family: monospace; font-size: .9rem; color: var(--cream-dim); }
+  @media(max-width:600px){ .t1-card, .t3-dash { flex-direction: column; grid-template-columns: 1fr; } }
+
+  /* ---------- Tab Spec Split Layout ---------- */
+  .spec-split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; margin-top: 16px; text-align: left; }
+  .spec-col { display: flex; flex-direction: column; gap: 24px; }
+  .spec-pitch { font-size: 1.1rem; color: var(--cream); font-style: italic; border-left: 3px solid var(--gold); padding-left: 12px; }
+  .spec-section h4 { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 8px; }
+  .spec-section p, .spec-section ul { color: var(--cream-dim); font-size: .95rem; line-height: 1.6; }
+  .spec-section ul { padding-left: 20px; list-style-type: disc; }
+  .spec-section li { margin-bottom: 4px; }
+  .spec-moment { font-family: "Space Mono", monospace; font-size: .95rem; color: #7fae84; background: rgba(0,154,68,0.1); padding: 12px; border-radius: 8px; border: 1px solid rgba(0,154,68,0.2); }
+  @media(max-width: 900px) { .spec-split { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- reusable freedom-star (Juneteenth nova) as an inline SVG symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="nova" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="50" cy="50" r="30"/>
+      <circle cx="50" cy="50" r="44" stroke-dasharray="2 6"/>
+    </g>
+    <path fill="currentColor" d="M50 12 L56 44 L88 50 L56 56 L50 88 L44 56 L12 50 L44 44 Z"/>
+  </symbol>
+</svg>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg class="star" style="color:var(--gold)"><use href="#nova"/></svg>
+      GDG San Antonio · Juneteenth Build Jam
+    </a>
+    <!-- REPLACE the GitHub URL below -->
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="nav-cta" href="talk.html">The Talk ↗</a>
+      <a class="nav-cta" href="codelab.html" style="background:var(--gold); border-color:var(--gold); color:#2a1c06;">Open Codelab ↗</a>
+      <a class="nav-cta" href="https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam" target="_blank" rel="noopener">Get the kit ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <img class="event-img" src="Gemini_Generated_Image_otlo13otlo13otlo.webp" alt="Juneteenth Build Jam" />
+  <svg class="nova" style="color:rgba(232,163,61,.5)"><use href="#nova"/></svg>
+  <div class="wrap">
+    <!-- REPLACE the date + venue -->
+    <p class="eyebrow">June 19 · Geekdom, San Antonio</p>
+    <h1 class="display">Build with AI.<br>Together.<br><span class="free">In two hours.</span></h1>
+    <p class="lede">Five civic tracks. Open a kit, ship a real prototype, point it at your own block.</p>
+    <p class="meta">A community-first coding jam for Juneteenth — using AI as a tool for local impact. Bring a laptop and an idea. Drop-ins welcome.</p>
+    <div class="cta-row">
+      <!-- REPLACE the GitHub URL below -->
+      <a class="btn btn-primary" href="codelab.html">Open Codelab ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam" target="_blank" rel="noopener">Clone &amp; build →</a>
+      <a class="btn btn-ghost" href="#demo">Watch the demo ↓</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="tracks">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">Five tracks. Pick any one.</h2>
+      <span class="note">// no order required</span>
+    </div>
+    <div class="tracks">
+
+      <article class="card" style="--c:var(--gold)">
+        <div class="glyph">🛍️</div>
+        <div class="domain">Economic Empowerment</div>
+        <h3>Stand Up Shop</h3>
+        <p class="ship">Your business, optimized and funded.</p>
+        <p class="builds">Describe your business → optimized business plans, SEO descriptions, and civic grant matching.</p>
+      </article>
+
+      <article class="card" style="--c:var(--clay)">
+        <div class="glyph">📜</div>
+        <div class="domain">Preserving History</div>
+        <h3>Griot</h3>
+        <p class="ship">Your history, mapped and preserved.</p>
+        <p class="builds">Paste a memory or transcript → timelines, map-ready coordinates, and narrative summaries.</p>
+      </article>
+
+      <article class="card" style="--c:var(--teal)">
+        <div class="glyph">🩺</div>
+        <div class="domain">Community Health</div>
+        <h3>PlainCare</h3>
+        <p class="ship">Your health barriers, navigated.</p>
+        <p class="builds">Describe your situation → actionable public health resources and clear next steps.</p>
+      </article>
+
+      <article class="card" style="--c:var(--indigo)">
+        <div class="glyph">🗣️</div>
+        <div class="domain">Civic Engagement</div>
+        <h3>Speak Up</h3>
+        <p class="ship">Local government, demystified.</p>
+        <p class="builds">Paste council minutes → major decisions, community impact, and how to comment.</p>
+      </article>
+
+      <article class="card" style="--c:var(--green)">
+        <div class="glyph">🌳</div>
+        <div class="domain">Environmental Justice</div>
+        <h3>Block Scan</h3>
+        <p class="ship">Neighborhood neglect, officially reported.</p>
+        <p class="builds">Photograph a concern → identify the violation and draft a formal 311 service request.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">See what they build.</h2>
+      <span class="note">// example inputs & AI outputs</span>
+    </div>
+
+    <div class="demo-tabs">
+      <div class="tabs-nav" role="tablist">
+        <button class="tab-btn active" role="tab" data-target="tab-1">🛍️ Stand Up Shop</button>
+        <button class="tab-btn" role="tab" data-target="tab-2">📜 Griot</button>
+        <button class="tab-btn" role="tab" data-target="tab-3">🩺 PlainCare</button>
+        <button class="tab-btn" role="tab" data-target="tab-4">🗣️ Speak Up</button>
+        <button class="tab-btn" role="tab" data-target="tab-5">🌳 Block Scan</button>
+      </div>
+
+      <!-- Tab 1 -->
+      <div class="tab-panel active" id="tab-1" role="tabpanel">
+        <div class="spec-split">
+          <div class="spec-col">
+            <div class="spec-pitch">"Neighborhood vision + Gemini → an instant co-op storefront and grant match."</div>
+            
+            <div class="spec-section">
+              <h4>What you'll build (45 min)</h4>
+              <p>Type in a community initiative (like a garden). AI instantly generates a branded co-op profile, a competitive pricing strategy, an SEO-friendly description, and matches the project to a local civic grant.</p>
+            </div>
+            
+            <div class="spec-section">
+              <h4>The moment it clicks</h4>
+              <div class="spec-moment">"Wait, it found a $5,000 micro-grant we actually qualify for?"</div>
+            </div>
+            
+            <div class="spec-section">
+              <h4>Things to think about</h4>
+              <ul>
+                <li><strong>Keep it text-based today.</strong> No complex payment integrations or databases.</li>
+                <li><strong>Your signature detail.</strong> What makes your storefront unique? Gen-Z aesthetics, or formal municipal proposals?</li>
+                <li><strong>Test with wild ideas.</strong> Try a "laser tag arena" first to see edge cases.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="demo-col">
+            <div class="mini-project mp-t1">
+              <div class="mp-head">🛍️ Stand Up Shop Output</div>
+              <div class="mp-body">
+                <div class="mp-user-input">"Our neighborhood association wants to turn an abandoned lot into a community garden and sell the produce to fund after-school programs."</div>
+                <div class="t1-card">
+                  <div class="t1-img">🌱</div>
+                  <div class="t1-info">
+                    <h4>East Side Greens Co-op</h4>
+                    <div class="t1-price">$3.00 - $8.00 / bundle</div>
+                    <p>"Fresh, locally-grown produce cultivated by the community, for the community. Every purchase directly supports local after-school youth initiatives."</p>
+                    <div class="t1-badge">Grant Match: Approved</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="tab-panel" id="tab-2" role="tabpanel">
+        <div class="spec-split">
+          <div class="spec-col">
+            <div class="spec-pitch">"Scrappy notes & photos + Gemini → a digital museum exhibit for the neighborhood."</div>
+            
+            <div class="spec-section">
+              <h4>What you'll build (45 min)</h4>
+              <p>Upload raw, messy notes from a family journal. The AI processes the text, extracts key dates to build a historical timeline, maps out coordinates, and drafts a compelling narrative summary.</p>
+            </div>
+            
+            <div class="spec-section">
+              <h4>The moment it clicks</h4>
+              <div class="spec-moment">"It extracted the exact year my grandfather's shop opened from that messy journal entry."</div>
+            </div>
+            
+            <div class="spec-section">
+              <h4>Things to think about</h4>
+              <ul>
+                <li><strong>Focus on the timeline.</strong> Don't worry about a full interactive map yet; just get the coordinates.</li>
+                <li><strong>Your signature detail.</strong> Formal "academic archivist" tone, or a warmer "storytelling elder"?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-col">
+            <div class="mini-project mp-t2">
+              <div class="mp-head">📜 Griot Archive</div>
+              <div class="mp-body">
+                <div class="mp-user-input">"A collection of oral history interviews from neighborhood elders about the Black-owned businesses on Commerce Street before urban renewal."</div>
+                <div class="t2-parchment">
+                  <p><em>"Before the bulldozers arrived, Commerce Street was the economic engine of our community..."</em></p>
+                  <div class="t2-timeline">
+                    <div class="t2-event"><span class="t2-year">1952</span> — Commerce Street reaches 50+ minority-owned businesses.</div>
+                    <div class="t2-event"><span class="t2-year">1968</span> — 'Urban Renewal' project designated by city council.</div>
+                    <div class="t2-event"><span class="t2-year">1974</span> — Highway construction completes, bisecting the district.</div>
+                  </div>
+                  <p style="font-size:.85rem; color:var(--cream-dim); margin-top:12px;">📍 <strong>Mapped Coordinates:</strong> 29.4231° N, 98.4812° W (Historical Corridor)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="tab-panel" id="tab-3" role="tabpanel">
+        <div class="spec-split">
+          <div class="spec-col">
+            <div class="spec-pitch">"Confusing medical bills & transit gaps + Gemini → a clear, actionable neighborhood health plan."</div>
+            
+            <div class="spec-section">
+              <h4>What you'll build (45 min)</h4>
+              <p>Type in a complex health or logistics hurdle. The AI translates the jargon, assesses the community logistics, and generates a simple Action Plan connecting the user to charity care and mutual aid transit.</p>
+            </div>
+            
+            <div class="spec-section">
+              <h4>The moment it clicks</h4>
+              <div class="spec-moment">"It didn't just tell me to eat healthy; it told me what time the mobile pantry stops at the church."</div>
+            </div>
+            
+            <div class="spec-section">
+              <h4>Things to think about</h4>
+              <ul>
+                <li><strong>No real medical advice.</strong> Ensure strict guardrails. Focus on navigation and logistics, not diagnosis.</li>
+                <li><strong>Your signature detail.</strong> SMS-style chatbot, or a printed "prescription" checklist?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-col">
+            <div class="mini-project mp-t3">
+              <div class="mp-head">🩺 PlainCare Navigator</div>
+              <div class="mp-body">
+                <div class="mp-user-input">"The only grocery store in our ZIP code just closed, and many elderly residents don't have cars to reach the clinic or get fresh food."</div>
+                <div class="t3-dash">
+                  <div class="t3-box">
+                    <h5>Community Crisis Analysis</h5>
+                    <p><strong>Status:</strong> Severe Food Desert & Transit Gap.</p>
+                    <div class="t3-check"><i>✔</i> Immediate intervention required for senior residents.</div>
+                  </div>
+                  <div class="t3-box">
+                    <h5>Community Action Plan</h5>
+                    <div class="t3-check"><i>1.</i> Logistics: Request mobile food pantry drop-off at the neighborhood church.</div>
+                    <div class="t3-check"><i>2.</i> Transit: Register block for city-subsidized senior paratransit passes.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4 -->
+      <div class="tab-panel" id="tab-4" role="tabpanel">
+        <div class="spec-split">
+          <div class="spec-col">
+            <div class="spec-pitch">"Dense city council transcripts + Gemini → an instant Civic Insight Report and mobilization alert."</div>
+            
+            <div class="spec-section">
+              <h4>What you'll build (45 min)</h4>
+              <p>Paste in a wall of text from a dry zoning meeting transcript. The AI identifies the major decisions, highlights the displacement risk, and generates a clear "Community Action" alert with deadlines.</p>
+            </div>
+            
+            <div class="spec-section">
+              <h4>The moment it clicks</h4>
+              <div class="spec-moment">"It read a 10-page zoning PDF and instantly flagged the exact block facing a tax spike."</div>
+            </div>
+            
+            <div class="spec-section">
+              <h4>Things to think about</h4>
+              <ul>
+                <li><strong>Focus on extraction.</strong> Pull the impact, not just a summary. Tell the AI exactly what "vulnerable community impact" means.</li>
+                <li><strong>Your signature detail.</strong> Does it output as an email template, a WhatsApp forward, or a formal memo?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-col">
+            <div class="mini-project mp-t4">
+              <div class="mp-head">🗣️ Civic Insight Report</div>
+              <div class="mp-body">
+                <div class="mp-user-input">"Notes from last night's neighborhood association meeting regarding the city's plan to rezone the old elementary school into luxury condos."</div>
+                <div class="t4-memo">
+                  <p><strong>Major Decision:</strong> Proposed rezoning of MLK Elementary site to High-Density Luxury Residential.</p>
+                  <div class="t4-alert">
+                    <strong>⚠️ Vulnerable Community Impact:</strong><br>
+                    Guaranteed spike in adjacent property taxes. High displacement risk for long-term homeowners in the immediate 5-block radius.
+                  </div>
+                  <p><strong>Community Action:</strong> Final vote is on <span class="t4-date">April 5th</span>. Organize a delegation of 10+ residents to speak at the Planning Commission hearing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5 -->
+      <div class="tab-panel" id="tab-5" role="tabpanel">
+        <div class="spec-split">
+          <div class="spec-col">
+            <div class="spec-pitch">"A photo or text of a neighborhood hazard + Gemini → a drafted, formal 311 service request or petition."</div>
+            
+            <div class="spec-section">
+              <h4>What you'll build (45 min)</h4>
+              <p>Describe an environmental hazard (like a chemical smell or illegal dumping). The AI classifies the violation and instantly drafts a formal, structured petition ready to be sent to Code Enforcement or the EPA.</p>
+            </div>
+            
+            <div class="spec-section">
+              <h4>The moment it clicks</h4>
+              <div class="spec-moment">"It turned my angry rant about the smell into a perfectly formatted, legally-sound EPA petition."</div>
+            </div>
+            
+            <div class="spec-section">
+              <h4>Things to think about</h4>
+              <ul>
+                <li><strong>Keep the output format strict.</strong> The magic is in making the output look like a real ticket. Use headers and a formal tone.</li>
+                <li><strong>Your signature detail.</strong> Does it generate a single email, a mass petition, or a social media blast?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-col">
+            <div class="mini-project mp-t5">
+              <div class="mp-head">🌳 Block Scan Ticket</div>
+              <div class="mp-body">
+                <div class="mp-user-input">"Our block captain collected 50 signatures about the recurring industrial chemical smell coming from the factory across the train tracks."</div>
+                <div class="t5-ticket">
+                  <div class="t5-status">Status: Ready to Send</div>
+                  <p><strong>Violation:</strong> Potential Clean Air Act Violation / Unpermitted Industrial Emissions.</p>
+                  <div class="t5-form">
+                    To the EPA & Local City Council: Attached is a petition with 50 resident signatures from the East Side Neighborhood Coalition. We are formally reporting a severe, recurring chemical odor emanating from the industrial facility on 4th street. This is causing respiratory distress among community members. We demand an immediate air quality inspection and enforcement of emission standards.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="demo-cap">A walk through one track, start to finish — built on Antigravity with the Gemini API.</p>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">Run a kit in 90 seconds.</h2>
+      <span class="note">// you don't need to know Python</span>
+    </div>
+
+    <div class="run-grid">
+      <div class="term" aria-label="terminal commands">
+        <div class="bar"><i style="background:#D24A33"></i><i style="background:#E8A33D"></i><i style="background:#46A35E"></i></div>
+<pre><span class="c"># 1. grab the kit</span>
+<span class="p">$</span> git clone <span style="color:var(--cream-dim)">&lt;repo URL from the screen&gt;</span>
+<span class="p">$</span> cd juneteenth-build-jam/tracks/01-economic-empowerment
+
+<span class="c"># 2. add your free Gemini key</span>
+<span class="p">$</span> cp .env.example .env   <span class="c"># paste your key inside</span>
+
+<span class="c"># 3. go</span>
+<span class="p">$</span> uv run app.py</pre>
+      </div>
+
+      <div>
+        <ol class="steps">
+          <li><strong>Install Antigravity</strong><span>The desktop app from <a href="https://antigravity.google" target="_blank" rel="noopener">antigravity.google</a>. The jam runs in it.</span></li>
+          <li><strong>Install uv</strong><span>macOS/Linux: run the one-liner at <a href="https://astral.sh/uv" target="_blank" rel="noopener">astral.sh/uv</a>. Windows: standalone steps there too.</span></li>
+          <li><strong>Git + a GitHub account</strong><span>So you can clone a starter kit when you arrive.</span></li>
+          <li><strong>A free Gemini key</strong><span>From <a href="https://ai.google.dev" target="_blank" rel="noopener">ai.google.dev</a> — the free tier covers the whole jam.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h3>Build for the community. In two hours.</h3>
+    </div>
+    <div class="right">
+      <!-- REPLACE date/venue + GitHub URL -->
+      June 19 · Geekdom, San Antonio<br>
+      Hosted by GDG San Antonio<br>
+      <a href="https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam" target="_blank" rel="noopener">github.com/GDG-SAN-ANTONIO/juneteenth-build-jam ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // gentle page-load reveal on the hero (respects reduced-motion via CSS guard)
+  document.addEventListener('DOMContentLoaded',()=>{
+    const h=document.querySelector('.hero .wrap');
+    if(!h) return;
+    h.style.opacity=0; h.style.transform='translateY(14px)';
+    requestAnimationFrame(()=>{
+      h.style.transition='opacity .7s ease, transform .7s ease';
+      h.style.opacity=1; h.style.transform='none';
+    });
+  });
+
+  // Tab switching logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>
