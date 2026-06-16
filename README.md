@@ -59,7 +59,7 @@ Each track folder contains:
 ## Step-by-Step Codelab
 
 Follow the full guided walkthrough at the event site:
-👉 **[gdg-sa-juneteenth.netlify.app/codelab.html](https://gdg-sa-juneteenth.netlify.app/codelab.html)**
+👉 **[gdg-san-antonio.github.io/juneteenth-build-jam/codelab.html](https://gdg-san-antonio.github.io/juneteenth-build-jam/codelab.html)**
 
 It walks you through:
 1. Installing Antigravity
