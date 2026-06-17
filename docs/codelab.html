@@ -608,6 +608,14 @@
   <nav class="sidebar" id="sidebar-panel">
     <ul class="steps-list">
       <li class="step-item active" data-step="1">
+        <div class="step-num">0</div>
+        <div class="step-info">
+          <span class="step-label">Set Up Workspace</span>
+          <span class="step-time">5 min</span>
+        </div>
+        <div class="step-checkbox">✔</div>
+      </li>
+      <li class="step-item" data-step="2">
         <div class="step-num">1</div>
         <div class="step-info">
           <span class="step-label">Introduction &amp; Set Up</span>
@@ -615,7 +623,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="2">
+      <li class="step-item" data-step="3">
         <div class="step-num">2</div>
         <div class="step-info">
           <span class="step-label">Install Required Tools</span>
@@ -623,7 +631,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="3">
+      <li class="step-item" data-step="4">
         <div class="step-num">3</div>
         <div class="step-info">
           <span class="step-label">Pick &amp; Clone Your Track</span>
@@ -631,7 +639,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="4">
+      <li class="step-item" data-step="5">
         <div class="step-num">4</div>
         <div class="step-info">
           <span class="step-label">The Spec Talk</span>
@@ -639,7 +647,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="5">
+      <li class="step-item" data-step="6">
         <div class="step-num">5</div>
         <div class="step-info">
           <span class="step-label">Generate 3 Design Docs</span>
@@ -647,7 +655,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="6">
+      <li class="step-item" data-step="7">
         <div class="step-num">6</div>
         <div class="step-info">
           <span class="step-label">Build &amp; Test</span>
@@ -655,7 +663,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="7">
+      <li class="step-item" data-step="8">
         <div class="step-num">7</div>
         <div class="step-info">
           <span class="step-label">Add Your Gemini Key</span>
@@ -663,7 +671,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="8">
+      <li class="step-item" data-step="9">
         <div class="step-num">8</div>
         <div class="step-info">
           <span class="step-label">Run It &amp; Show It Off</span>
@@ -677,8 +685,56 @@
   <main class="content-container">
     <div class="content-wrap">
 
-      <!-- Step 1 -->
+      <!-- Step 0 -->
       <section class="step-section active" id="sec-1">
+        <h1 class="step-title">0. Set Up Your Workspace</h1>
+        <p>Before anything else, let's get your project folder cloned and connected to Antigravity so the AI has full access to your files and can run commands on your machine.</p>
+
+        <h2>Clone the Repository</h2>
+        <p>Open your terminal (Command Prompt, PowerShell, or Git Bash) and run:</p>
+
+        <span class="paste-label">📝 Run this in your terminal:</span>
+        <div class="code-container">
+          <button class="copy-btn">Copy</button>
+          <pre>git clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
+        </div>
+
+        <p>This downloads all five track kits to your machine into a folder called <code>juneteenth-build-jam</code>. Remember where you save it — you'll need that path in the next step.</p>
+
+        <h2>Point Antigravity to Your Project Folder</h2>
+        <p>Antigravity needs to know which folder to work in so it can read your files, write code, and run commands automatically.</p>
+        <ol>
+          <li>Open <strong>Antigravity</strong> and look for the <strong>⚙️ Settings</strong> icon.</li>
+          <li>Find the <strong>Active Workspace</strong> or <strong>Project Directory</strong> field.</li>
+          <li>Paste the full path to the folder you just cloned:</li>
+        </ol>
+
+        <div class="code-container">
+          <button class="copy-btn">Copy</button>
+          <pre><span class="c"># Windows example:</span>
+C:\Users\your-name\projects\juneteenth-build-jam
+
+<span class="c"># macOS / Linux example:</span>
+/Users/your-name/projects/juneteenth-build-jam</pre>
+        </div>
+
+        <ol start="4">
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+
+        <div class="alert alert-tip">
+          <div class="alert-title">💡 Why this matters</div>
+          <p>Once the workspace is set, Antigravity has full context of your project — it can read <code>SPEC.md</code>, write new files, install packages, and run your app, all without you having to copy-paste file paths.</p>
+        </div>
+
+        <div class="alert alert-checkpoint">
+          <div class="alert-title">✅ You're good to move on when...</div>
+          <p>The <code>juneteenth-build-jam</code> folder is cloned on your machine and Antigravity shows it as the active workspace in Settings.</p>
+        </div>
+      </section>
+
+      <!-- Step 1 -->
+      <section class="step-section" id="sec-2">
         <h1 class="step-title">1. Introduction &amp; Set Up</h1>
         <p>Welcome to the <strong>Juneteenth Build Jam</strong>! In the next 75 minutes, you are going to design, build, and deploy a real, working AI-powered web application using <strong>Antigravity</strong>, an agentic coding assistant.</p>
         
@@ -714,7 +770,7 @@
       </section>
 
       <!-- Step 2 -->
-      <section class="step-section" id="sec-2">
+      <section class="step-section" id="sec-3">
         <h1 class="step-title">2. Install Required Tools (via Antigravity)</h1>
         <p>Antigravity requires two auxiliary command-line tools to be set up on your machine in order to manage projects:</p>
         
@@ -773,7 +829,7 @@ Don't install Node.js. Ask permission before each install command.</pre>
       </section>
 
       <!-- Step 3 -->
-      <section class="step-section" id="sec-3">
+      <section class="step-section" id="sec-4">
         <h1 class="step-title">3. Pick &amp; Clone Your Track Kit</h1>
         <p>The Juneteenth Build Jam features <strong>five local civic tracks</strong>. Select the track you would like to build today. The instructions, path names, and AI prompts in the subsequent steps will dynamically customize themselves to align with your choice!</p>
 
@@ -857,7 +913,7 @@ Don't install Node.js. Ask permission before each install command.</pre>
       </section>
 
       <!-- Step 4 -->
-      <section class="step-section" id="sec-4">
+      <section class="step-section" id="sec-5">
         <h1 class="step-title">4. The Spec Talk</h1>
         <p>Before the AI writes a single line of code, you and the AI get on the same page about what you're building. This takes about 5 minutes and saves a lot of backtracking later.</p>
 
@@ -895,7 +951,7 @@ Don't write any code yet. Just ask the questions and wait for my answers.</pre>
       </section>
 
       <!-- Step 5 -->
-      <section class="step-section" id="sec-5">
+      <section class="step-section" id="sec-6">
         <h1 class="step-title">5. Generate 3 Design Docs</h1>
         <p>Now you'll have the AI plan the entire app before it writes code. Think of these three files as your blueprint — they keep the AI focused so it doesn't go off and build the wrong thing.</p>
 
@@ -939,7 +995,7 @@ give me a quick summary of what's in each one.</pre>
       </section>
 
       <!-- Step 6 -->
-      <section class="step-section" id="sec-6">
+      <section class="step-section" id="sec-7">
         <h1 class="step-title">6. Build &amp; Test</h1>
         <p>This is the big one. The AI reads your three docs and builds the whole app — backend, frontend, and tests. Your job is to click <strong>Allow</strong> when it asks permission to run commands.</p>
 
@@ -981,7 +1037,7 @@ Click Allow when I get permission prompts for installing packages or running tes
       </section>
 
       <!-- Step 7 -->
-      <section class="step-section" id="sec-7">
+      <section class="step-section" id="sec-8">
         <h1 class="step-title">7. Add Your Gemini Key</h1>
         <p>The app is built but it's running on a fake AI connection. Now we plug in your real Gemini API key so it talks to the actual model.</p>
 
@@ -1020,7 +1076,7 @@ Also:
       </section>
 
       <!-- Step 8 -->
-      <section class="step-section" id="sec-8">
+      <section class="step-section" id="sec-9">
         <h1 class="step-title">8. Run It &amp; Show It Off 🎉</h1>
         <p>Everything is built and wired up. Time to see your app live in the browser!</p>
 
@@ -1085,14 +1141,15 @@ Keep it short and friendly. Save it as README.md.</pre>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const steps = [
-      { id: 1, duration: 5, el: document.getElementById('sec-1') },
-      { id: 2, duration: 5, el: document.getElementById('sec-2') },
-      { id: 3, duration: 5, el: document.getElementById('sec-3') },
-      { id: 4, duration: 10, el: document.getElementById('sec-4') },
+      { id: 1, duration: 5,  el: document.getElementById('sec-1') },
+      { id: 2, duration: 5,  el: document.getElementById('sec-2') },
+      { id: 3, duration: 5,  el: document.getElementById('sec-3') },
+      { id: 4, duration: 5,  el: document.getElementById('sec-4') },
       { id: 5, duration: 10, el: document.getElementById('sec-5') },
-      { id: 6, duration: 20, el: document.getElementById('sec-6') },
-      { id: 7, duration: 5, el: document.getElementById('sec-7') },
-      { id: 8, duration: 10, el: document.getElementById('sec-8') }
+      { id: 6, duration: 10, el: document.getElementById('sec-6') },
+      { id: 7, duration: 20, el: document.getElementById('sec-7') },
+      { id: 8, duration: 5,  el: document.getElementById('sec-8') },
+      { id: 9, duration: 10, el: document.getElementById('sec-9') }
     ];
 
     const totalSteps = steps.length;
