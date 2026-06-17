@@ -210,6 +210,54 @@
     z-index: 1;
   }
 
+  /* ── Act Break ── */
+  .act-break { justify-content: center; }
+  .act-break .act-label {
+    font-family: "Space Mono", monospace;
+    font-size: 1vw;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(244,236,220,.3);
+    margin-bottom: 2vw;
+    position: relative; z-index: 2;
+  }
+  .act-break .act-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    font-size: 4.2vw;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    margin-bottom: 1.8vw;
+    position: relative; z-index: 2;
+  }
+  .act-break .act-title span { color: var(--gold); }
+  .act-break .act-body {
+    font-size: 1.45vw;
+    color: var(--cream-dim);
+    max-width: 50ch;
+    line-height: 1.6;
+    position: relative; z-index: 2;
+  }
+
+  /* ── Build Principle slides ── */
+  .build-num {
+    font-family: "Space Mono", monospace;
+    font-size: 1vw;
+    color: var(--green);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: .6vw;
+    position: relative; z-index: 2;
+  }
+  .principle-aside {
+    margin-top: 1.4vw;
+    font-size: 1.2vw;
+    color: rgba(244,236,220,.55);
+    font-style: italic;
+    position: relative; z-index: 2;
+    max-width: 50ch;
+  }
+
   /* ── SLIDE 9: Transition to Build ── */
   #s9 { align-items: flex-start; justify-content: center; }
   #s9 h2 {
@@ -371,6 +419,7 @@
     <div class="accent-line"></div>
     <h2 class="principle-title">Design With,<br>Not For.</h2>
     <p class="principle-body">The people closest to a problem should help shape the solution. Work alongside residents, community orgs, and local stakeholders to understand real needs before writing a single line of code.</p>
+    <p class="principle-aside">The model doesn't know your community. You do. That's the part it can't generate.</p>
     <p class="principle-ask">Ask: Who is affected by this problem, and have we talked to them yet?</p>
   </div>
 
@@ -401,6 +450,7 @@
     <div class="accent-line"></div>
     <h2 class="principle-title">Iterate<br>for Impact.</h2>
     <p class="principle-body">Solve one problem well before solving ten problems poorly. Build small, focused tools that reduce friction today. Launch, gather feedback, and improve based on real-world use — not assumptions.</p>
+    <p class="principle-aside">Constrain the AI too — one sharp problem beats an unbounded prompt.</p>
     <p class="principle-ask">Ask: What's the smallest thing we can ship that creates meaningful value?</p>
   </div>
 
@@ -424,6 +474,53 @@
     <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: Are we solving a real problem, or chasing a shiny technology?</p>
   </div>
 
+  <!-- Act Break -->
+  <div class="slide glow-red act-break" id="s-act">
+    <p class="act-label">// the craft layer</p>
+    <h2 class="act-title">You know the why.<br><span>Here's the how.</span></h2>
+    <p class="act-body">Six principles are your compass — who you build for and why. These four are your craft — how to wield AI in two hours without shipping a demo that dies on contact.</p>
+  </div>
+
+  <!-- Build Principle 1 -->
+  <div class="slide" id="s-b1">
+    <div class="bg-num" style="color:rgba(0,154,68,.04)">1</div>
+    <p class="build-num">Build Principle 01</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Say What You<br>Want Back.</h2>
+    <p class="principle-body">AI returns whatever's plausible unless you specify otherwise. Decide the exact shape of the output — format, fields, tone — <em>before</em> you prompt. A formatted 311 request. A structured timeline. A one-page action plan. Define "done" and make the model hit it.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: Do I know what a good answer looks like before I ask for it?</p>
+  </div>
+
+  <!-- Build Principle 2 -->
+  <div class="slide" id="s-b2">
+    <div class="bg-num" style="color:rgba(0,154,68,.04)">2</div>
+    <p class="build-num">Build Principle 02</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Name What It<br>Must Never Do.</h2>
+    <p class="principle-body">Every AI tool has predictable failure modes: it gives advice it shouldn't, states a guess as fact, surfaces something private. Write those limits in as requirements, not disclaimers. Guardrails are part of the build.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: What's the one thing this tool must never do?</p>
+  </div>
+
+  <!-- Build Principle 3 -->
+  <div class="slide" id="s-b3">
+    <div class="bg-num" style="color:rgba(0,154,68,.04)">3</div>
+    <p class="build-num">Build Principle 03</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Break It<br>on Purpose.</h2>
+    <p class="principle-body">The model is confidently wrong in ways only weird input reveals. Feed it the empty field, the messy transcript, the absurd request — before a resident does. Happy-path testing is how demos die in public.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: Have I tried the input I'm afraid of?</p>
+  </div>
+
+  <!-- Build Principle 4 -->
+  <div class="slide" id="s-b4">
+    <div class="bg-num" style="color:rgba(0,154,68,.04)">4</div>
+    <p class="build-num">Build Principle 04</p>
+    <div class="accent-line green"></div>
+    <h2 class="principle-title">Own Your<br>Setup.</h2>
+    <p class="principle-body">"You don't need to know Python" doesn't mean skip the basics. Keys stay out of the repo. Start from the kit, not a blank file. A reproducible setup lets your judgment go to the problem instead of the plumbing.</p>
+    <p class="principle-ask" style="border-color:var(--green);color:var(--green)">Ask: Could someone else run this in five minutes?</p>
+  </div>
+
   <!-- Slide 9: Transition to Build Jam -->
   <div class="slide glow-red glow-green" id="s9">
     <img class="event-img-slide" src="Gemini_Generated_Image_otlo13otlo13otlo.webp" alt="Juneteenth Build Jam" />
@@ -436,7 +533,7 @@
       <div class="track-row">🗣️ <b>Speak Up</b> — civic engagement</div>
       <div class="track-row">🌳 <b>Block Scan</b> — environmental justice</div>
     </div>
-    <p class="cta">→ Open the codelab and pick your track.</p>
+    <p class="cta">Six principles for how to think. Four for how to build. Now go.</p>
   </div>
 
   <!-- Home button -->
