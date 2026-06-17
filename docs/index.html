@@ -129,6 +129,26 @@
   .steps span{color:var(--cream-dim);font-size:.93rem}
   .steps a{color:var(--gold);border-bottom:1px solid rgba(232,163,61,.4)}
 
+  /* ---------- run tabs ---------- */
+  .run-tabs{display:flex;gap:8px;margin-bottom:18px}
+  .run-tab{font-family:"Space Mono",monospace;font-size:.78rem;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--cream-dim);cursor:pointer;transition:.2s}
+  .run-tab:hover{border-color:var(--cream);color:var(--cream)}
+  .run-tab.active{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+  .run-panel{display:none}.run-panel.active{display:block}
+
+  /* Antigravity chat box */
+  .ag-box{background:#0e0a06;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ag-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .ag-bar-left{display:flex;align-items:center;gap:8px;font-family:"Space Mono",monospace;font-size:.75rem;color:var(--cream-dim)}
+  .ag-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .ag-model{font-family:"Space Mono",monospace;font-size:.72rem;color:rgba(244,236,220,.35);background:rgba(244,236,220,.05);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+  .ag-chat{padding:20px 18px;display:flex;flex-direction:column;gap:14px}
+  .ag-bubble{background:rgba(206,17,38,.1);border:1px solid rgba(206,17,38,.2);border-radius:12px 12px 4px 12px;padding:14px 16px;font-family:"Space Mono",monospace;font-size:.82rem;line-height:1.75;color:var(--cream);align-self:flex-end;max-width:92%}
+  .ag-response{background:rgba(244,236,220,.04);border:1px solid var(--line);border-radius:4px 12px 12px 12px;padding:14px 16px;font-size:.88rem;line-height:1.7;color:var(--cream-dim);align-self:flex-start;max-width:92%}
+  .ag-response b{color:var(--green)}
+  .ag-input-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--line);font-family:"Space Mono",monospace;font-size:.75rem;color:rgba(244,236,220,.25)}
+  .ag-send{margin-left:auto;background:var(--gold);color:#fff;border:none;padding:6px 14px;border-radius:8px;font-family:"Space Mono",monospace;font-size:.72rem;cursor:default;opacity:.7}
+
   /* ---------- footer ---------- */
   .foot{border-top:1px solid var(--line);padding:56px 0 70px}
   .foot .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-end}
@@ -571,11 +591,19 @@
       <span class="note">// you don't need to know Python</span>
     </div>
 
+    <div class="run-tabs">
+      <button class="run-tab active" data-panel="cli">⌨️ CLI</button>
+      <button class="run-tab" data-panel="ag">🪐 Antigravity</button>
+    </div>
+
     <div class="run-grid">
-      <div class="term" aria-label="terminal commands">
-        <div class="bar"><i style="background:#D24A33"></i><i style="background:#E8A33D"></i><i style="background:#46A35E"></i></div>
+      <div>
+        <!-- CLI panel -->
+        <div class="run-panel active" id="panel-cli">
+          <div class="term" aria-label="terminal commands">
+            <div class="bar"><i style="background:#D24A33"></i><i style="background:#E8A33D"></i><i style="background:#46A35E"></i></div>
 <pre><span class="c"># 1. grab the kit</span>
-<span class="p">$</span> git clone <span style="color:var(--cream-dim)">&lt;repo URL from the screen&gt;</span>
+<span class="p">$</span> git clone <span style="color:var(--cream-dim)">https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</span>
 <span class="p">$</span> cd juneteenth-build-jam/tracks/01-economic-empowerment
 
 <span class="c"># 2. add your free Gemini key</span>
@@ -583,6 +611,26 @@
 
 <span class="c"># 3. go</span>
 <span class="p">$</span> uv run app.py</pre>
+          </div>
+        </div>
+
+        <!-- Antigravity panel -->
+        <div class="run-panel" id="panel-ag">
+          <div class="ag-box">
+            <div class="ag-bar">
+              <div class="ag-bar-left"><div class="ag-dot"></div> Antigravity</div>
+              <div class="ag-model">Gemini 3.5 Flash (Medium)</div>
+            </div>
+            <div class="ag-chat">
+              <div class="ag-bubble">Install uv and git on my computer if they're not already there. Don't install Node.js. Ask permission before each install command.<br><br>Then clone this repo to my Desktop:<br>https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</div>
+              <div class="ag-response"><b>✔ uv 0.4.x installed</b><br><b>✔ git 2.x.x already installed</b><br><b>✔ Repo cloned → Desktop/juneteenth-build-jam</b><br><br>All done! Open the tracks folder and pick your track to get started.</div>
+            </div>
+            <div class="ag-input-bar">
+              Ask Antigravity anything...
+              <div class="ag-send">Send</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div>
@@ -620,6 +668,18 @@
     requestAnimationFrame(()=>{
       h.style.transition='opacity .7s ease, transform .7s ease';
       h.style.opacity=1; h.style.transform='none';
+    });
+  });
+
+  // Run section tab switching
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.run-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.run-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.run-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
     });
   });
 
