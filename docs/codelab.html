@@ -608,14 +608,6 @@
   <nav class="sidebar" id="sidebar-panel">
     <ul class="steps-list">
       <li class="step-item active" data-step="1">
-        <div class="step-num">0</div>
-        <div class="step-info">
-          <span class="step-label">Set Up Workspace</span>
-          <span class="step-time">5 min</span>
-        </div>
-        <div class="step-checkbox">✔</div>
-      </li>
-      <li class="step-item" data-step="2">
         <div class="step-num">1</div>
         <div class="step-info">
           <span class="step-label">Introduction &amp; Set Up</span>
@@ -623,23 +615,23 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="3">
+      <li class="step-item" data-step="2">
         <div class="step-num">2</div>
         <div class="step-info">
-          <span class="step-label">Install Required Tools</span>
+          <span class="step-label">Install Tools &amp; Get the Code</span>
+          <span class="step-time">10 min</span>
+        </div>
+        <div class="step-checkbox">✔</div>
+      </li>
+      <li class="step-item" data-step="3">
+        <div class="step-num">3</div>
+        <div class="step-info">
+          <span class="step-label">Pick &amp; Open Your Track</span>
           <span class="step-time">5 min</span>
         </div>
         <div class="step-checkbox">✔</div>
       </li>
       <li class="step-item" data-step="4">
-        <div class="step-num">3</div>
-        <div class="step-info">
-          <span class="step-label">Pick &amp; Clone Your Track</span>
-          <span class="step-time">5 min</span>
-        </div>
-        <div class="step-checkbox">✔</div>
-      </li>
-      <li class="step-item" data-step="5">
         <div class="step-num">4</div>
         <div class="step-info">
           <span class="step-label">The Spec Talk</span>
@@ -647,7 +639,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="6">
+      <li class="step-item" data-step="5">
         <div class="step-num">5</div>
         <div class="step-info">
           <span class="step-label">Generate 3 Design Docs</span>
@@ -655,7 +647,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="7">
+      <li class="step-item" data-step="6">
         <div class="step-num">6</div>
         <div class="step-info">
           <span class="step-label">Build &amp; Test</span>
@@ -663,7 +655,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="8">
+      <li class="step-item" data-step="7">
         <div class="step-num">7</div>
         <div class="step-info">
           <span class="step-label">Add Your Gemini Key</span>
@@ -671,7 +663,7 @@
         </div>
         <div class="step-checkbox">✔</div>
       </li>
-      <li class="step-item" data-step="9">
+      <li class="step-item" data-step="8">
         <div class="step-num">8</div>
         <div class="step-info">
           <span class="step-label">Run It &amp; Show It Off</span>
@@ -685,55 +677,8 @@
   <main class="content-container">
     <div class="content-wrap">
 
-      <!-- Step 0 -->
-      <section class="step-section active" id="sec-1">
-        <h1 class="step-title">0. Set Up Your Workspace</h1>
-        <p>Before anything else, let's get your project folder cloned and connected to Antigravity so the AI has full access to your files and can run commands on your machine.</p>
 
-        <h2>Clone the Repository</h2>
-        <p>Open your terminal (Command Prompt, PowerShell, or Git Bash) and run:</p>
-
-        <span class="paste-label">📝 Run this in your terminal:</span>
-        <div class="code-container">
-          <button class="copy-btn">Copy</button>
-          <pre>git clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
-        </div>
-
-        <p>This downloads all five track kits to your machine into a folder called <code>juneteenth-build-jam</code>. You'll open just your chosen track folder in Step 3 — for now just remember where you saved it.</p>
-
-        <h2>Point Antigravity to Your Project Folder</h2>
-        <p>Antigravity needs to know which folder to work in so it can read your files, write code, and run commands automatically.</p>
-        <ol>
-          <li>Open <strong>Antigravity</strong> and look for the <strong>⚙️ Settings</strong> icon.</li>
-          <li>Find the <strong>Active Workspace</strong> or <strong>Project Directory</strong> field.</li>
-          <li>Paste the full path to the folder you just cloned:</li>
-        </ol>
-
-        <div class="code-container">
-          <button class="copy-btn">Copy</button>
-          <pre><span class="c"># Windows example:</span>
-C:\Users\your-name\projects\juneteenth-build-jam
-
-<span class="c"># macOS / Linux example:</span>
-/Users/your-name/projects/juneteenth-build-jam</pre>
-        </div>
-
-        <ol start="4">
-          <li>Click <strong>Save</strong>.</li>
-        </ol>
-
-        <div class="alert alert-tip">
-          <div class="alert-title">💡 Why this matters</div>
-          <p>Once the workspace is set, Antigravity has full context of your project — it can read <code>SPEC.md</code>, write new files, install packages, and run your app, all without you having to copy-paste file paths.</p>
-        </div>
-
-        <div class="alert alert-checkpoint">
-          <div class="alert-title">✅ You're good to move on when...</div>
-          <p>The <code>juneteenth-build-jam</code> folder is cloned on your machine and Antigravity shows it as the active workspace in Settings.</p>
-        </div>
-      </section>
-
-      <!-- Step 1 -->
+      <!-- Step 1 (was Step 0 removed, sec-1 now unused placeholder kept for JS) -->
       <section class="step-section" id="sec-2">
         <h1 class="step-title">1. Introduction &amp; Set Up</h1>
         <p>Welcome to the <strong>Juneteenth Build Jam</strong>! In the next 75 minutes, you are going to design, build, and deploy a real, working AI-powered web application using <strong>Antigravity</strong>, an agentic coding assistant.</p>
@@ -771,61 +716,51 @@ C:\Users\your-name\projects\juneteenth-build-jam
 
       <!-- Step 2 -->
       <section class="step-section" id="sec-3">
-        <h1 class="step-title">2. Install Required Tools (via Antigravity)</h1>
-        <p>Antigravity requires two auxiliary command-line tools to be set up on your machine in order to manage projects:</p>
-        
-        <table>
-          <thead>
-            <tr>
-              <th>Tool</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>uv</strong></td>
-              <td>Astral's lightning-fast Python package installer and manager. Handles the backend server.</td>
-            </tr>
-            <tr>
-              <td><strong>git</strong></td>
-              <td>Version control tool used by Antigravity to download templates and track code changes.</td>
-            </tr>
-          </tbody>
-        </table>
+        <h1 class="step-title">2. Install Tools &amp; Get the Code</h1>
+        <p>We need two tools installed — <strong>uv</strong> (runs Python apps) and <strong>git</strong> (downloads code) — plus the event repo cloned to your machine. Pick the path that fits you:</p>
 
-        <p>Instead of copying installation commands into your system terminal, <strong>you'll ask Antigravity to set them up for you.</strong></p>
-
-        <h2>Open a Temporary Workspace</h2>
-        <p>Antigravity needs a workspace open in order to start an assistant session.</p>
+        <h2>⭐ Option A — Let Antigravity do everything <em style="font-size:.85rem;color:var(--cream-dim);font-style:normal;">(recommended for beginners)</em></h2>
+        <p>Stay inside Antigravity the whole time. No terminal needed.</p>
         <ol>
           <li>On the Antigravity welcome screen, click <strong>"Open Folder"</strong>.</li>
-          <li>Create or pick an empty folder on your machine (e.g., a folder named <code>coding-jam-setup</code> on your Desktop).</li>
-          <li>Open or select that folder. The conversational chat interface will load.</li>
+          <li>Create or pick an empty folder on your Desktop (e.g., <code>coding-jam-setup</code>) and open it. The chat interface will load.</li>
+          <li>Select <strong>Gemini 3.5 Flash (Medium)</strong> from the model dropdown.</li>
         </ol>
 
-        <h2>Ask Antigravity to Setup Tools</h2>
-        <p>Focus the text area at the bottom of the Antigravity window (shortcut: <code>Ctrl+L</code> on Windows/Linux, <code>Cmd+L</code> on macOS). Select <strong>Gemini 3.5 Flash (Medium)</strong> from the model dropdown, and paste the following prompt:</p>
-
+        <span class="paste-label">📝 Paste this:</span>
         <div class="code-container">
           <button class="copy-btn">Copy</button>
-          <pre>Install uv and git on my computer if they're not already there. 
-Don't install Node.js. Ask permission before each install command.</pre>
+          <pre>Install uv and git on my computer if they're not already there.
+Don't install Node.js. Ask permission before each install command.
+
+Then clone this repo to my Desktop:
+https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
         </div>
 
-        <p>Click send. Click <strong>Allow</strong> on the pop-ups when Antigravity asks for permission to execute the installation commands.</p>
+        <p>Click <strong>Allow</strong> on each permission pop-up. Antigravity will install the tools and download all five track kits in one shot.</p>
 
         <div class="alert alert-checkpoint">
-          <div class="alert-title">Checkpoint</div>
-          <p>The agent will run a version check on completion. Make sure you see something like: <br>
-          <code>uv 0.4.x (installed)</code> and <code>git 2.x.x (already installed)</code> in the chat window.</p>
+          <div class="alert-title">✅ You're good to move on when...</div>
+          <p>Antigravity confirms <code>uv</code> and <code>git</code> are installed and the <code>juneteenth-build-jam</code> folder appears on your Desktop.</p>
         </div>
 
         <div class="alert alert-warning">
-          <div class="alert-title">Warning</div>
-          <p>If the automatic installation fails, download the installers manually from their official portals and restart Antigravity: <br>
+          <div class="alert-title">🚨 If the install fails</div>
+          <p>Download manually and restart Antigravity:<br>
           • <strong>uv:</strong> <a href="https://astral.sh/uv" target="_blank">astral.sh/uv</a><br>
           • <strong>git:</strong> <a href="https://git-scm.com" target="_blank">git-scm.com</a></p>
         </div>
+
+        <h2>Option B — I know the terminal</h2>
+        <p>Open Command Prompt, PowerShell, or Git Bash and run:</p>
+
+        <span class="paste-label">📝 Run this:</span>
+        <div class="code-container">
+          <button class="copy-btn">Copy</button>
+          <pre>git clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
+        </div>
+
+        <p>Then install uv from <a href="https://astral.sh/uv" target="_blank">astral.sh/uv</a> if you don't already have it. Done — jump to Step 3.</p>
       </section>
 
       <!-- Step 3 -->
@@ -881,15 +816,7 @@ Don't install Node.js. Ask permission before each install command.</pre>
           <p>You have selected: <strong class="dyn-track-name">Stand Up Shop</strong>. All terminal commands, folder names, and prompt examples in this guide are now configured for this track using the <code class="dyn-track-folder">tracks/01-economic-empowerment</code> directory.</p>
         </div>
 
-        <h2>Clone the Repository</h2>
-        <p>In Antigravity, click the <strong>"Clone Repository"</strong> button on the welcome screen. Use the template below, replacing the local path placeholder:</p>
-
-        <div class="code-container">
-          <button class="copy-btn">Copy</button>
-          <pre>Git clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git and save to my local folder: &lt;REPLACE_WITH_FOLDER_PATH&gt;</pre>
-        </div>
-
-        <h2>Open Your Specific Track Folder</h2>
+        <h2>Open Your Track Folder in Antigravity</h2>
         <p>Because the repository contains multiple tracks, you must open your chosen track folder directly in Antigravity as a separate workspace to isolate the environment and dependencies:</p>
         <ol>
           <li>Close the current repository workspace if needed (click folder icon or select close folder).</li>
@@ -1141,15 +1068,14 @@ Keep it short and friendly. Save it as README.md.</pre>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const steps = [
-      { id: 1, duration: 5,  el: document.getElementById('sec-1') },
-      { id: 2, duration: 5,  el: document.getElementById('sec-2') },
-      { id: 3, duration: 5,  el: document.getElementById('sec-3') },
-      { id: 4, duration: 5,  el: document.getElementById('sec-4') },
-      { id: 5, duration: 10, el: document.getElementById('sec-5') },
-      { id: 6, duration: 10, el: document.getElementById('sec-6') },
-      { id: 7, duration: 20, el: document.getElementById('sec-7') },
-      { id: 8, duration: 5,  el: document.getElementById('sec-8') },
-      { id: 9, duration: 10, el: document.getElementById('sec-9') }
+      { id: 1, duration: 5,  el: document.getElementById('sec-2') },
+      { id: 2, duration: 10, el: document.getElementById('sec-3') },
+      { id: 3, duration: 5,  el: document.getElementById('sec-4') },
+      { id: 4, duration: 10, el: document.getElementById('sec-5') },
+      { id: 5, duration: 10, el: document.getElementById('sec-6') },
+      { id: 6, duration: 20, el: document.getElementById('sec-7') },
+      { id: 7, duration: 5,  el: document.getElementById('sec-8') },
+      { id: 8, duration: 10, el: document.getElementById('sec-9') }
     ];
 
     const totalSteps = steps.length;
