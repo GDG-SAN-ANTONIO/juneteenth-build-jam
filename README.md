@@ -21,6 +21,22 @@ Install these four things so you're ready to go the moment the jam starts:
 
 ## Run a Kit in 90 Seconds
 
+**Option A — Antigravity (no terminal needed)**
+
+Open Antigravity and paste this prompt:
+
+```
+I'm at the Juneteenth Build Jam. Help me get set up:
+1. Check if uv is installed — if not, show me how to install it from astral.sh/uv
+2. Check if git is installed — if not, show me how to install it from git-scm.com
+3. Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git
+4. Open the tracks/ folder and tell me what each track does so I can pick one
+```
+
+Antigravity will walk you through each step in plain language and run the commands for you.
+
+**Option B — Terminal**
+
 ```bash
 # 1. Clone this repo
 git clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git
