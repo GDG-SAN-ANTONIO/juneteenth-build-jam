@@ -626,7 +626,7 @@
       <li class="step-item" data-step="3">
         <div class="step-num">3</div>
         <div class="step-info">
-          <span class="step-label">Pick &amp; Open Your Track</span>
+          <span class="step-label">Pick Your Track</span>
           <span class="step-time">5 min</span>
         </div>
         <div class="step-checkbox">✔</div>
@@ -765,8 +765,8 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
 
       <!-- Step 3 -->
       <section class="step-section" id="sec-4">
-        <h1 class="step-title">3. Pick &amp; Clone Your Track Kit</h1>
-        <p>The Juneteenth Build Jam features <strong>five local civic tracks</strong>. Select the track you would like to build today. The instructions, path names, and AI prompts in the subsequent steps will dynamically customize themselves to align with your choice!</p>
+        <h1 class="step-title">3. Pick Your Track</h1>
+        <p>The repo is on your machine. Now pick the civic track you want to build today — then we'll open just that folder so you're focused on one thing.</p>
 
         <div class="track-select-grid">
           <div class="track-select-card selected" data-track-id="1" style="--c: var(--gold);">
@@ -813,35 +813,39 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
 
         <div class="alert alert-tip">
           <div class="alert-title">Active Track Template Customizer</div>
-          <p>You have selected: <strong class="dyn-track-name">Stand Up Shop</strong>. All terminal commands, folder names, and prompt examples in this guide are now configured for this track using the <code class="dyn-track-folder">tracks/01-economic-empowerment</code> directory.</p>
+          <p>You have selected: <strong class="dyn-track-name">Stand Up Shop</strong>. All folder names and prompt examples in this guide are now configured for the <code class="dyn-track-folder">tracks/01-economic-empowerment</code> track.</p>
         </div>
 
-        <h2>Open Your Track Folder in Antigravity</h2>
-        <p>Because the repository contains multiple tracks, you must open your chosen track folder directly in Antigravity as a separate workspace to isolate the environment and dependencies:</p>
+        <h2>Open Your Track in Antigravity</h2>
+        <p>Close the setup workspace from Step 2 (click the folder icon → close folder), then open just your track:</p>
         <ol>
-          <li>Close the current repository workspace if needed (click folder icon or select close folder).</li>
-          <li>Click <strong>"Open Folder"</strong> on the welcome screen.</li>
-          <li>Navigate into the cloned <code>juneteenth-build-jam</code> folder, click on <code>tracks</code>, select the folder for your chosen track (<code class="dyn-track-folder">tracks/01-economic-empowerment</code>), and click <strong>Open</strong>.</li>
+          <li>Click <strong>"Open Folder"</strong> on the Antigravity welcome screen.</li>
+          <li>Navigate to your Desktop → <code>juneteenth-build-jam</code> → <code>tracks</code> → <code class="dyn-track-folder">tracks/01-economic-empowerment</code>.</li>
+          <li>Click <strong>Open</strong>. The chat interface will reload with only your track's files.</li>
         </ol>
 
-        <span class="paste-label">📝 Paste this in Antigravity after opening your track folder:</span>
+        <span class="paste-label">📝 Paste this to confirm you're in the right place:</span>
         <div class="code-container">
           <button class="copy-btn">Copy</button>
-          <pre>I just opened my track folder. Read SPEC.md and give me a one-paragraph plain-English summary of what this track builds and who it helps. Don't write any code yet.</pre>
+          <pre>Read SPEC.md and give me a one-paragraph plain-English summary of what this track builds and who it helps. Don't write any code yet.</pre>
         </div>
 
-        <h2>Explore the Files</h2>
-        <p>Once your track workspace loads in Antigravity, expand the file list. You will find:</p>
+        <div class="alert alert-tip">
+          <div class="alert-title">💡 Terminal users (Option B from Step 2)</div>
+          <p>Just <code>cd juneteenth-build-jam/<code class="dyn-track-folder">tracks/01-economic-empowerment</code></code> and open that folder in Antigravity using <strong>File → Open Folder</strong>.</p>
+        </div>
+
+        <h2>What's in Your Track Folder</h2>
         <ul>
-          <li><strong>SPEC.md</strong>: Contains the product specs, pitch, user stories, and requirements for this specific track.</li>
-          <li><strong>app.py</strong>: A connection smoke-test — run it to confirm your Gemini key works. In Steps 5 and 6 you'll build a full web app from your spec.</li>
-          <li><strong>requirements.txt</strong>: Backend package dependency manifest.</li>
-          <li><strong>.env.example</strong>: A template for your environment variables.</li>
+          <li><strong>SPEC.md</strong> — the product brief: what to build, who it's for, and the user stories.</li>
+          <li><strong>app.py</strong> — a starter script wired to Gemini. Steps 5 and 6 are where you build the real app.</li>
+          <li><strong>.env.example</strong> — copy this to <code>.env</code> and add your Gemini key in Step 7.</li>
+          <li><strong>requirements.txt</strong> — package list (uv handles this automatically).</li>
         </ul>
 
         <div class="alert alert-checkpoint">
-          <div class="alert-title">Checkpoint</div>
-          <p>You have successfully cloned the repository, opened the specific track subdirectory (<code class="dyn-track-folder">tracks/01-economic-empowerment</code>) as your active workspace in Antigravity, and read <code>SPEC.md</code>.</p>
+          <div class="alert-title">✅ You're good to move on when...</div>
+          <p>Antigravity is open to your track folder (<code class="dyn-track-folder">tracks/01-economic-empowerment</code>), you can see <code>SPEC.md</code> in the sidebar, and the AI gave you a plain-English summary of what you're building.</p>
         </div>
       </section>
 
