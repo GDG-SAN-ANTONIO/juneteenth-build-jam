@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Data &amp; Resources for Your Build · GDG San Antonio Juneteenth Build Jam</title>
+<meta name="description" content="Real data sources for each civic track at the Juneteenth Build Jam — open datasets, government portals, and community resources." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --ink-2:#141414;
+    --cream:#F4ECDC;
+    --cream-dim:#cdc2ad;
+    --gold:#CE1126;
+    --clay:#CE1126;
+    --teal:#009A44;
+    --indigo:#CE1126;
+    --green:#009A44;
+    --line:rgba(244,236,220,.14);
+    --maxw:1140px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:"Public Sans",system-ui,sans-serif;
+    font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  .display{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:.98;letter-spacing:-.02em}
+  .mono{font-family:"Space Mono",monospace}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(23,17,12,.72);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:.95rem;color:var(--cream)}
+  .brand .star{width:20px;height:20px;flex:none}
+  .nav-cta{font-family:"Space Mono",monospace;font-size:.8rem;border:1px solid var(--line);
+    padding:9px 16px;border-radius:999px;transition:.2s;white-space:nowrap;color:var(--cream)}
+  .nav-cta:hover{background:var(--cream);color:var(--ink);border-color:var(--cream);text-decoration:none}
+
+  /* ---------- page header ---------- */
+  .page-hero{padding:72px 0 52px;border-bottom:1px solid var(--line)}
+  .page-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin:.3em 0 .5em}
+  .page-hero .intro{font-size:1.08rem;color:var(--cream-dim);max-width:68ch;line-height:1.7}
+
+  /* ---------- content ---------- */
+  .content{padding:56px 0 96px}
+  .resource-section{margin-bottom:52px}
+  .resource-section h2{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:800;
+    font-size:clamp(1.4rem,3vw,2rem);
+    letter-spacing:-.01em;
+    margin-bottom:18px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
+  .resource-section ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+  .resource-section li{
+    font-size:1rem;
+    color:var(--cream-dim);
+    line-height:1.55;
+    padding:12px 16px;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .resource-section li strong{color:var(--cream)}
+  .resource-section li a{color:var(--gold)}
+  .resource-section li a:hover{color:var(--cream)}
+
+  /* ---------- alert callouts ---------- */
+  .alert{
+    padding:20px;
+    border-radius:12px;
+    margin:0 0 20px;
+    border:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .alert-title{
+    font-family:"Space Mono",monospace;
+    font-size:.85rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .alert-warning{
+    background:rgba(206,17,38,.06);
+    border-left:4px solid var(--gold);
+    border-color:var(--gold) var(--line) var(--line) var(--gold);
+  }
+  .alert-warning .alert-title{color:var(--gold)}
+  .alert p{color:var(--cream-dim);font-size:.97rem;line-height:1.65;margin:0}
+
+  /* ---------- footer ---------- */
+  .foot{border-top:1px solid var(--line);padding:56px 0 70px}
+  .foot .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-end}
+  .foot h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.6rem;max-width:18ch;line-height:1.05}
+  .foot .right{text-align:right;color:var(--cream-dim);font-size:.9rem;font-family:"Space Mono",monospace;line-height:1.9}
+  .foot .right a{color:var(--gold)}
+
+  @media(max-width:760px){
+    .foot .right{text-align:left}
+    .page-hero{padding:48px 0 36px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="nova" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="50" cy="50" r="30"/>
+      <circle cx="50" cy="50" r="44" stroke-dasharray="2 6"/>
+    </g>
+    <path fill="currentColor" d="M50 12 L56 44 L88 50 L56 56 L50 88 L44 56 L12 50 L44 44 Z"/>
+  </symbol>
+</svg>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="star" style="color:var(--gold)"><use href="#nova"/></svg>
+      GDG San Antonio · Juneteenth Build Jam
+    </a>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="nav-cta" href="talk.html">The Talk ↗</a>
+      <a class="nav-cta" href="resources.html" style="background:rgba(0,154,68,.12);border-color:var(--green);color:var(--green);">Resources</a>
+      <a class="nav-cta" href="codelab.html" style="background:var(--gold); border-color:var(--gold); color:#2a1c06;">Open Codelab ↗</a>
+      <a class="nav-cta" href="https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam" target="_blank" rel="noopener">Get the kit ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Juneteenth Build Jam · Data Sources</p>
+    <h1 class="display">Data &amp; Resources for Your Build</h1>
+    <p class="intro">Real data makes a better demo. Pick one source for your track, drop the link or a sample into the chat, and let the AI work with it. Treat every AI output as a draft to verify — especially grants, coordinates, and any official-looking claim.</p>
+  </div>
+</header>
+
+<main class="content">
+  <div class="wrap">
+
+    <!-- Foundational -->
+    <section class="resource-section">
+      <h2>Foundational (any track)</h2>
+      <ul>
+        <li><strong>City of San Antonio Open Data</strong> — city datasets, open by default — <a href="https://data.sanantonio.gov" target="_blank" rel="noopener">data.sanantonio.gov</a></li>
+        <li><strong>COSA GIS Open Data</strong> — zoning/planning maps, council districts, parks, historic sites, impervious cover, neighborhood association registry — <a href="https://opendata-cosagis.opendata.arcgis.com" target="_blank" rel="noopener">opendata-cosagis.opendata.arcgis.com</a></li>
+        <li><strong>Texas Open Data Portal</strong> — statewide data plus a San Antonio slice — <a href="https://data.texas.gov" target="_blank" rel="noopener">data.texas.gov</a></li>
+        <li><strong>U.S. Census / American Community Survey</strong> — demographics, income, poverty, vehicle access by tract — <a href="https://data.census.gov" target="_blank" rel="noopener">data.census.gov</a></li>
+      </ul>
+    </section>
+
+    <!-- Stand Up Shop -->
+    <section class="resource-section">
+      <h2>🛍️ Stand Up Shop — Economic Empowerment</h2>
+      <ul>
+        <li><strong>City Economic Development: Programs &amp; Grants</strong> — current local business grants/programs — <a href="https://www.sa.gov/Directory/Departments/EDD/Programs-Grants" target="_blank" rel="noopener">sa.gov/Directory/Departments/EDD/Programs-Grants</a></li>
+        <li><strong>Grants.gov</strong> — federal grant opportunities — <a href="https://www.grants.gov" target="_blank" rel="noopener">grants.gov</a></li>
+        <li><strong>U.S. Small Business Administration</strong> — programs and local SBDC counseling — <a href="https://www.sba.gov" target="_blank" rel="noopener">sba.gov</a></li>
+        <li><strong>LiftFund</strong> — San Antonio-based CDFI microlender — <a href="https://liftfund.com" target="_blank" rel="noopener">liftfund.com</a></li>
+      </ul>
+    </section>
+
+    <!-- Griot -->
+    <section class="resource-section">
+      <h2>📜 Griot — Preserving History</h2>
+      <ul>
+        <li><strong>The Portal to Texas History (UNT)</strong> — SA newspapers, HemisFair '68, Folklife Festival images — <a href="https://texashistory.unt.edu" target="_blank" rel="noopener">texashistory.unt.edu</a></li>
+        <li><strong>UTSA Digital Collections</strong> — photographs, oral histories, San Antonio &amp; Chicano history — <a href="https://digital.utsa.edu" target="_blank" rel="noopener">digital.utsa.edu</a></li>
+        <li><strong>San Antonio Public Library — Texana &amp; Genealogy</strong> — local history special collections — <a href="https://mysapl.org" target="_blank" rel="noopener">mysapl.org</a></li>
+        <li><strong>Digital Public Library of America</strong> — national digital archives — <a href="https://dp.la" target="_blank" rel="noopener">dp.la</a></li>
+        <li><strong>Library of Congress</strong> — national primary sources — <a href="https://www.loc.gov" target="_blank" rel="noopener">loc.gov</a></li>
+      </ul>
+    </section>
+
+    <!-- PlainCare -->
+    <section class="resource-section">
+      <h2>🩺 PlainCare — Community Health</h2>
+      <ul>
+        <li><strong>USDA Food Access Research Atlas</strong> — census-tract food-desert mapping — <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas" target="_blank" rel="noopener">ers.usda.gov/data-products/food-access-research-atlas</a></li>
+        <li><strong>CDC PLACES</strong> — local health estimates down to census-tract level — <a href="https://www.cdc.gov/places" target="_blank" rel="noopener">cdc.gov/places</a></li>
+        <li><strong>Texas Health Data (DSHS)</strong> — state health datasets — <a href="https://healthdata.dshs.texas.gov" target="_blank" rel="noopener">healthdata.dshs.texas.gov</a></li>
+        <li><strong>HRSA Find a Health Center</strong> — federally funded clinics by location — <a href="https://findahealthcenter.hrsa.gov" target="_blank" rel="noopener">findahealthcenter.hrsa.gov</a></li>
+        <li><strong>2-1-1 Texas</strong> — social-service and resource directory — <a href="https://www.211texas.org" target="_blank" rel="noopener">211texas.org</a></li>
+        <li><strong>VIA Metropolitan Transit</strong> — routes and paratransit for transit-gap questions — <a href="https://www.viainfo.net" target="_blank" rel="noopener">viainfo.net</a></li>
+      </ul>
+    </section>
+
+    <!-- Speak Up -->
+    <section class="resource-section">
+      <h2>🗣️ Speak Up — Civic Engagement</h2>
+      <ul>
+        <li><strong>City Clerk: Council Agendas &amp; Minutes</strong> — official meeting agendas and minutes — <a href="https://www.sanantonio.gov/Clerk/Legislative/City-Council-Agendas-Minutes" target="_blank" rel="noopener">sanantonio.gov/Clerk/Legislative/City-Council-Agendas-Minutes</a></li>
+        <li><strong>SASpeakUp</strong> — agendas for council, committees, and boards/commissions — <a href="https://www.saspeakup.com" target="_blank" rel="noopener">saspeakup.com</a></li>
+        <li><strong>Legistar</strong> — searchable legislation/agenda system — <a href="https://sanantonio.legistar.com" target="_blank" rel="noopener">sanantonio.legistar.com</a></li>
+        <li><strong>Texas Legislature Online</strong> — state bills and statutes — <a href="https://capitol.texas.gov" target="_blank" rel="noopener">capitol.texas.gov</a></li>
+        <li><strong>Bexar County</strong> — county government and records — <a href="https://www.bexar.org" target="_blank" rel="noopener">bexar.org</a></li>
+      </ul>
+    </section>
+
+    <!-- Block Scan -->
+    <section class="resource-section">
+      <h2>🌳 Block Scan — Environmental Justice</h2>
+      <div class="alert alert-warning">
+        <div class="alert-title">⚠️ Heads up</div>
+        <p>EPA removed EJScreen from public access on February 5, 2025, and the related CEJST tool was also removed. The links below point to volunteer-maintained reconstructions — useful, but treat the data as unofficial and verify before relying on it.</p>
+      </div>
+      <ul>
+        <li><strong>EJScreen (volunteer reconstruction)</strong> — environmental burden + demographic mapping — <a href="https://screening-tools.com/epa-ejscreen" target="_blank" rel="noopener">screening-tools.com/epa-ejscreen</a></li>
+        <li><strong>AirNow</strong> — current air quality by location — <a href="https://www.airnow.gov" target="_blank" rel="noopener">airnow.gov</a></li>
+        <li><strong>EPA ECHO</strong> — facility enforcement &amp; compliance history — <a href="https://echo.epa.gov" target="_blank" rel="noopener">echo.epa.gov</a></li>
+        <li><strong>TCEQ</strong> — Texas environmental data and complaints — <a href="https://www.tceq.texas.gov" target="_blank" rel="noopener">tceq.texas.gov</a></li>
+        <li><strong>San Antonio 311 service requests</strong> — illegal dumping and code complaints — <a href="https://data.sanantonio.gov" target="_blank" rel="noopener">data.sanantonio.gov</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h3>Build for the community. In two hours.</h3>
+    </div>
+    <div class="right">
+      June 19 · Geekdom, San Antonio<br>
+      Hosted by GDG San Antonio<br>
+      <a href="https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam" target="_blank" rel="noopener">github.com/GDG-SAN-ANTONIO/juneteenth-build-jam ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
