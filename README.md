@@ -2,7 +2,7 @@
 
 **Build with AI. Together. In two hours.**
 
-Five civic tracks. Pick one, open the kit, ship a real AI prototype for your community.
+Five civic tracks — or bring your own idea. Pick one, open the kit, ship a real AI prototype for your community.
 
 ---
 
@@ -63,6 +63,7 @@ uv run app.py
 | 03 | 🩺 **PlainCare** | Describe a health or transit gap → plain-language action plan with local resources |
 | 04 | 🗣️ **Speak Up** | Paste council meeting notes → key decisions, community impact, how to take action |
 | 05 | 🌳 **Block Scan** | Describe a neighborhood hazard → violation classification and formal 311 / EPA petition |
+| 🌟 | **Your Idea** | No track? No problem. Use the codelab's spec builder to describe your community problem and let Antigravity build it with you |
 
 Each track folder contains:
 - `SPEC.md` — what to build and why
