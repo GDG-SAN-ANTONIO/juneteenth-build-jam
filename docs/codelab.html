@@ -817,6 +817,26 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
           <p>You have selected: <strong class="dyn-track-name">Stand Up Shop</strong>. All folder names and prompt examples in this guide are now configured for the <code class="dyn-track-folder">tracks/01-economic-empowerment</code> track.</p>
         </div>
 
+        <h2>Get Your Track</h2>
+        <p>Pick the path that matches how you set up in Step 2:</p>
+
+        <h3>⭐ Option A — Antigravity <em style="font-size:.85rem;color:var(--cream-dim);font-style:normal;">(recommended)</em></h3>
+        <p>Close the <code>jam-setup</code> scratch workspace (folder icon → close folder), open a new chat, and paste this:</p>
+        <span class="paste-label">📝 Paste this:</span>
+        <div class="code-container">
+          <button class="copy-btn">Copy</button>
+          <pre class="dyn-ag-prompt">Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/01-economic-empowerment folder as my workspace. Confirm when it's ready.</pre>
+        </div>
+
+        <h3>Option B — Terminal</h3>
+        <p>If you already cloned in Step 2, just navigate into your track:</p>
+        <span class="paste-label">📝 Run this:</span>
+        <div class="code-container">
+          <button class="copy-btn">Copy</button>
+          <pre class="dyn-cd-path">cd ~/Desktop/juneteenth-build-jam/tracks/01-economic-empowerment</pre>
+        </div>
+        <p>Then open that folder in Antigravity: <strong>File → Open Folder</strong>.</p>
+
         <h2>Open Your Track in Antigravity</h2>
 
         <div class="alert alert-tip">
@@ -837,7 +857,7 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
         <p>Close the setup workspace from Step 2 (click the folder icon → close folder), then open just your track:</p>
         <ol>
           <li>Click <strong>"Open Folder"</strong> on the Antigravity welcome screen.</li>
-          <li>Navigate to your Desktop → <code>juneteenth-build-jam</code> → <code class="dyn-track-folder">tracks/01-economic-empowerment</code>.</li>
+          <li>Navigate to your Desktop → <code>juneteenth-build-jam</code> → <code>tracks</code> → <code class="dyn-track-folder">tracks/01-economic-empowerment</code>.</li>
           <li>Click <strong>Open</strong>. The chat interface will reload with only your track's files.</li>
         </ol>
 
@@ -1258,6 +1278,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       1: {
         name: "Stand Up Shop",
         folder: "tracks/01-economic-empowerment",
+        agPrompt: "Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/01-economic-empowerment folder as my workspace. Confirm when it's ready.",
+        cdPath: "cd ~/Desktop/juneteenth-build-jam/tracks/01-economic-empowerment",
         pitch: '"Neighborhood vision + Gemini → an instant co-op storefront and grant match."',
         moment: '"Wait, it found a $5,000 micro-grant we actually qualify for?"',
         input: 'Our neighborhood association wants to turn an abandoned lot into a community garden and sell the produce to fund after-school programs.',
@@ -1266,6 +1288,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       2: {
         name: "Griot",
         folder: "tracks/02-preserving-history",
+        agPrompt: "Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/02-preserving-history folder as my workspace. Confirm when it's ready.",
+        cdPath: "cd ~/Desktop/juneteenth-build-jam/tracks/02-preserving-history",
         pitch: '"Scrappy notes & photos + Gemini → a digital museum exhibit for the neighborhood."',
         moment: '"It extracted the exact year my grandfather\'s shop opened from that messy journal entry."',
         input: 'A collection of oral history interviews from neighborhood elders about the Black-owned businesses on Commerce Street before urban renewal.',
@@ -1274,6 +1298,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       3: {
         name: "PlainCare",
         folder: "tracks/03-community-health",
+        agPrompt: "Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/03-community-health folder as my workspace. Confirm when it's ready.",
+        cdPath: "cd ~/Desktop/juneteenth-build-jam/tracks/03-community-health",
         pitch: '"Confusing medical bills & transit gaps + Gemini → a clear, actionable neighborhood health plan."',
         moment: '"It didn\'t just tell me to eat healthy; it told what time the mobile pantry stops at the church."',
         input: 'The only grocery store in our ZIP code just closed, and many elderly residents don\'t have cars to reach the clinic or get fresh food.',
@@ -1282,6 +1308,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       4: {
         name: "Speak Up",
         folder: "tracks/04-civic-engagement",
+        agPrompt: "Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/04-civic-engagement folder as my workspace. Confirm when it's ready.",
+        cdPath: "cd ~/Desktop/juneteenth-build-jam/tracks/04-civic-engagement",
         pitch: '"Dense city council transcripts + Gemini → an instant Civic Insight Report and mobilization alert."',
         moment: '"It read a 10-page zoning PDF and instantly flagged the exact block facing a tax spike."',
         input: 'Notes from last night\'s neighborhood association meeting regarding the city\'s plan to rezone the old elementary school into luxury condos.',
@@ -1290,6 +1318,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       5: {
         name: "Block Scan",
         folder: "tracks/05-environmental-justice",
+        agPrompt: "Clone https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git to my Desktop if it isn't there already, then open the tracks/05-environmental-justice folder as my workspace. Confirm when it's ready.",
+        cdPath: "cd ~/Desktop/juneteenth-build-jam/tracks/05-environmental-justice",
         pitch: '"A photo or text of a neighborhood hazard + Gemini → a drafted, formal 311 service request or petition."',
         moment: '"It turned my angry rant about the smell into a perfectly formatted, legally-sound EPA petition."',
         input: 'Our block captain collected 50 signatures about the recurring industrial chemical smell coming from the factory across the train tracks.',
@@ -1308,6 +1338,8 @@ Keep it short and friendly. Save it as README.md.</pre>
       document.querySelectorAll('.dyn-track-moment').forEach(el => el.textContent = data.moment);
       document.querySelectorAll('.dyn-track-input').forEach(el => el.textContent = data.input);
       document.querySelectorAll('.dyn-track-output').forEach(el => el.textContent = data.output);
+      document.querySelectorAll('.dyn-ag-prompt').forEach(el => el.textContent = data.agPrompt);
+      document.querySelectorAll('.dyn-cd-path').forEach(el => el.textContent = data.cdPath);
     }
 
     // Select a track and save it in state
