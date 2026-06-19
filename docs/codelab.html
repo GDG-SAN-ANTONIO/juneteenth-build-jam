@@ -704,8 +704,9 @@
         <h2>Verify the Welcome Screen</h2>
         <p>Once signed in, you should see the welcome screen presenting three primary buttons:</p>
         <ul>
-          <li><strong>Open Folder</strong>: Opens an existing directory as a workspace.</li>
+          <li><strong>Open Folder</strong>: Opens an existing directory as a workspace. (This is the one we'll use.)</li>
           <li><strong>Clone Repository</strong>: Downloads a codebase directly from GitHub.</li>
+          <li><strong>Start without a folder</strong>: Jumps straight into the agent. You won't need this one today.</li>
         </ul>
 
         <div class="alert alert-checkpoint">
@@ -723,7 +724,7 @@
         <p>Stay inside Antigravity the whole time. No terminal needed.</p>
         <ol>
           <li>On the Antigravity welcome screen, click <strong>"Open Folder"</strong>.</li>
-          <li>Create or pick an empty folder on your Desktop (e.g., <code>coding-jam-setup</code>) and open it. The chat interface will load.</li>
+          <li>Create an empty scratch folder on your Desktop (e.g., <code>jam-setup</code>) and open it. This folder is only there so Antigravity has a chat open &mdash; you'll switch to your real track folder in Step 3. The chat interface will load.</li>
           <li>Select <strong>Gemini 3.5 Flash (Medium)</strong> from the model dropdown.</li>
         </ol>
 
@@ -817,10 +818,26 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
         </div>
 
         <h2>Open Your Track in Antigravity</h2>
+
+        <div class="alert alert-tip">
+          <div class="alert-title">📁 Wait — where's my folder?</div>
+          <p>You don't create it by hand. The clone in Step 2 already made it: a folder called <code>juneteenth-build-jam</code> on your Desktop. Think of it as a <strong>box that holds all five tracks</strong>. To check it's there, minimize Antigravity and look at your Desktop. (Ignore the empty <code>jam-setup</code> scratch folder — that was only so Antigravity had a chat open.)</p>
+          <p>You don't build inside the big box. <strong>"Open Folder" is you reaching into the box for one track:</strong></p>
+          <pre>Desktop/
+└── juneteenth-build-jam/        ← the box (don't open this one directly)
+    └── tracks/
+        ├── 01-economic-empowerment/   ← Stand Up Shop
+        ├── 02-preserving-history/      ← Griot
+        ├── 03-community-health/        ← PlainCare
+        ├── 04-civic-engagement/        ← Speak Up
+        └── 05-environmental-justice/   ← Block Scan</pre>
+          <p>Open the <strong>one track folder</strong> you picked — not the <code>juneteenth-build-jam</code> box itself. If the AI seems confused about which track you mean, you probably opened the whole box: close it and open just the single track.</p>
+        </div>
+
         <p>Close the setup workspace from Step 2 (click the folder icon → close folder), then open just your track:</p>
         <ol>
           <li>Click <strong>"Open Folder"</strong> on the Antigravity welcome screen.</li>
-          <li>Navigate to your Desktop → <code>juneteenth-build-jam</code> → <code>tracks</code> → <code class="dyn-track-folder">tracks/01-economic-empowerment</code>.</li>
+          <li>Navigate to your Desktop → <code>juneteenth-build-jam</code> → <code class="dyn-track-folder">tracks/01-economic-empowerment</code>.</li>
           <li>Click <strong>Open</strong>. The chat interface will reload with only your track's files.</li>
         </ol>
 
