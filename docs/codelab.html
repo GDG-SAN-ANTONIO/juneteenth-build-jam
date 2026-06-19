@@ -474,6 +474,36 @@
     display: block;
   }
 
+  /* Custom spec builder */
+  .spec-field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .spec-input {
+    background: #090704;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: "Public Sans", sans-serif;
+    font-size: 0.95rem;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .spec-input:focus { outline: none; border-color: var(--cream-dim); }
+  .spec-input::placeholder { color: rgba(244,236,220,0.3); }
+  .spec-generate-btn {
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    background: var(--green);
+    color: var(--ink);
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 8px;
+  }
+  .spec-generate-btn:hover { background: var(--cream); }
+
   /* Checkbox logic */
   .step-checkbox {
     margin-left: auto;
@@ -810,6 +840,42 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
             <p class="tsc-desc">Environmental Justice. Turn a photo or report of neighborhood neglect into violation classifications and formal drafted EPA petitions or 311 request tickets.</p>
             <button class="tsc-btn">Select Track</button>
           </div>
+          <div class="track-select-card" data-track-id="6" style="--c: var(--cream-dim);">
+            <div class="tsc-header">
+              <span class="tsc-emoji">🌟</span>
+              <h3 class="tsc-title">Your Idea</h3>
+            </div>
+            <p class="tsc-desc">Bring your own. Got a community problem that doesn't fit a track? Build it your way — you set the spec, you set the scope.</p>
+            <button class="tsc-btn">Select Track</button>
+          </div>
+        </div>
+
+        <!-- Custom spec builder — only visible when track 6 is selected -->
+        <div id="custom-spec-builder" style="display:none;">
+          <div class="alert alert-tip" style="margin-bottom:16px;">
+            <div class="alert-title">🌟 Build Your Own Spec</div>
+            <p>Answer these three questions. We'll generate your Antigravity prompt from your answers.</p>
+          </div>
+          <div class="spec-field">
+            <label class="paste-label" for="spec-who">Who is this for?</label>
+            <input type="text" id="spec-who" class="spec-input" placeholder="e.g. Elderly residents on the east side who don't have reliable transit" />
+          </div>
+          <div class="spec-field">
+            <label class="paste-label" for="spec-input">What's the one thing they type in or upload?</label>
+            <input type="text" id="spec-input-field" class="spec-input" placeholder="e.g. Their address and a description of the problem" />
+          </div>
+          <div class="spec-field">
+            <label class="paste-label" for="spec-moment">What's the magic moment when it works?</label>
+            <input type="text" id="spec-moment" class="spec-input" placeholder="e.g. They see a plain-English action plan with real local resources" />
+          </div>
+          <button class="spec-generate-btn" id="spec-generate-btn">Generate My Prompt →</button>
+          <div id="custom-prompt-output" style="display:none; margin-top:20px;">
+            <span class="paste-label">📝 Paste this in Antigravity:</span>
+            <div class="code-container">
+              <button class="copy-btn">Copy</button>
+              <pre id="custom-prompt-text"></pre>
+            </div>
+          </div>
         </div>
 
         <div class="alert alert-tip">
@@ -817,7 +883,7 @@ https://github.com/GDG-SAN-ANTONIO/juneteenth-build-jam.git</pre>
           <p>You have selected: <strong class="dyn-track-name">Stand Up Shop</strong>. All folder names and prompt examples in this guide are now configured for the <code class="dyn-track-folder">tracks/01-economic-empowerment</code> track.</p>
         </div>
 
-        <h2>Get Your Track</h2>
+        <h2 id="get-your-track">Get Your Track</h2>
         <p>Pick the path that matches how you set up in Step 2:</p>
 
         <h3>⭐ Option A — Antigravity <em style="font-size:.85rem;color:var(--cream-dim);font-style:normal;">(recommended)</em></h3>
@@ -1296,6 +1362,16 @@ Keep it short and friendly. Save it as README.md.</pre>
         moment: '"It turned my angry rant about the smell into a perfectly formatted, legally-sound EPA petition."',
         input: 'Our block captain collected 50 signatures about the recurring industrial chemical smell coming from the factory across the train tracks.',
         output: 'EPA violation classification draft, unpermitted emission report, and formal city council petition'
+      },
+      6: {
+        name: "Your Idea",
+        folder: "my-project",
+        agPrompt: "",
+        cdPath: "",
+        pitch: '"Your community problem + Gemini → a real working app."',
+        moment: '"It built exactly what I described."',
+        input: '',
+        output: ''
       }
     };
 
@@ -1333,17 +1409,42 @@ Keep it short and friendly. Save it as README.md.</pre>
       updateTrackDynamicContent(trackId);
     }
 
+    // Show/hide custom spec builder and Get Your Track section
+    const customSpecBuilder = document.getElementById('custom-spec-builder');
+    const getYourTrackSection = document.getElementById('get-your-track');
+
+    function toggleCustomTrack(isCustom) {
+      customSpecBuilder.style.display = isCustom ? 'block' : 'none';
+      if (getYourTrackSection) getYourTrackSection.style.display = isCustom ? 'none' : 'block';
+    }
+
+    // Spec builder prompt generator
+    document.getElementById('spec-generate-btn').addEventListener('click', () => {
+      const who = document.getElementById('spec-who').value.trim();
+      const input = document.getElementById('spec-input-field').value.trim();
+      const moment = document.getElementById('spec-moment').value.trim();
+      if (!who || !input || !moment) {
+        alert('Please fill in all three fields first.');
+        return;
+      }
+      const prompt = `I'm building a custom civic app at the Juneteenth Build Jam. Here's my spec:\n\n- Who it's for: ${who}\n- What they type in or upload: ${input}\n- The magic moment when it works: ${moment}\n\nCreate a SPEC.md file from this spec. Then ask me 3 short clarifying questions before we write any code.`;
+      document.getElementById('custom-prompt-text').textContent = prompt;
+      document.getElementById('custom-prompt-output').style.display = 'block';
+    });
+
     // Set up track card select event listeners
     document.querySelectorAll('.track-select-card').forEach(card => {
       card.addEventListener('click', () => {
         const trackId = parseInt(card.getAttribute('data-track-id'), 10);
         selectTrack(trackId);
+        toggleCustomTrack(trackId === 6);
       });
     });
 
     // Load initial track selection
     const initialTrack = parseInt(localStorage.getItem('selectedTrack'), 10) || 1;
     selectTrack(initialTrack);
+    toggleCustomTrack(initialTrack === 6);
 
     // Initial load check
     checkHash();
